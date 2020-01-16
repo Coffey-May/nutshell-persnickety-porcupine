@@ -1,0 +1,18 @@
+.newsAndArticles{
+    border:1px solid black;
+    display:flex;
+    flex-direction: row;
+    height:60vh;
+}
+.newsDiv{
+    width:40vw;
+}
+
+
+.contentWrapper {
+    width:80vw;
+}
+.wrapper{
+    display: flex;
+    flex-direction: row;
+}
