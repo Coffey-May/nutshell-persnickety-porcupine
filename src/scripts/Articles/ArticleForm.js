@@ -11,12 +11,13 @@ const render = () => {
 <h4>NEWS</h4>
 <div>
     <form action="">
-        <button>Add Article</button>
+        <button>Add Article</button><br>
         <label for="">Name</label>
-        <input type="text">
+        <input type="text"><br>
         <label for="">Date</label>
-        <input type="date">
+        <input type="date"><br>
         <label for="">Location</label>
+        <input type="text">
     </form>
     <button>Save Article</button>
 </div>

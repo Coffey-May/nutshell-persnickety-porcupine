@@ -6,6 +6,8 @@ export const FriendFormComponent = () => {
 const render = () => {
   contentTarget.innerHTML =   
 `
+<div>
+<h4>FRIENDS</h4>
 <form action="">
 <button>Add Friend</button>
 <input type="text">

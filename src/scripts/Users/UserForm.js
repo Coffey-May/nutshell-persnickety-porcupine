@@ -16,16 +16,16 @@ export const userFormComponent = () => {
 <div>
     <form action="">
         <label for="">E-MAIL</label>
-        <input type="email">
+        <input type="email"><br>
         <label for="">Password</label>
-        <input type="passwaord">
-        <a href="url">REGISTER A NEW ACCOUNT</a>
+        <input type="password"><br>
+        <a href="url">REGISTER A NEW ACCOUNT</a><br>
         <label for="">CONFIRM PASSWORD</label>
         <input type="password">
     </form>
     <button>REGISTER</button>
 </div>
-`;
+`
 };
 render();
 };
