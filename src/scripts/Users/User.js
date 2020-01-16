@@ -1,9 +1,9 @@
-const userComponent = (note) => {
+const userComponent = (user) => {
   return `
-      <div class="note">
-              <div>Suspect: ${note.suspect}</div>
-              <div>Date: ${note.date}</div>
-              <div>Note: ${note.text}</div>
+      <div class="user">
+              <div>Suspect: ${user.suspect}</div>
+              <div>Date: ${user.date}</div>
+              <div>Note: ${user.text}</div>
       </div>
   `
 }
