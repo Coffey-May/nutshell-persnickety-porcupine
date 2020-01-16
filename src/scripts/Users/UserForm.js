@@ -54,16 +54,16 @@ export const userFormComponent = () => {
 <div>
     <form action="">
         <label for="">E-MAIL</label>
-        <input type="email" id="userName">
+        <input type="email" id="userName"><br>
         <label for="">Password</label>
-        <input type="passwaord" id="password1">
-        <a href="url">REGISTER A NEW ACCOUNT</a>
+        <input type="password" id="password1"><br>
+        <a href="url">REGISTER A NEW ACCOUNT</a><br>
         <label for="">CONFIRM PASSWORD</label>
         <input type="password" id="password2">
     </form>
     <button id="saveNewUser">REGISTER</button>
 </div>
-`;
+`
 };
 render();
 }
