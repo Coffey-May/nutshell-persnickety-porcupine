@@ -1,7 +1,9 @@
-import { useUsers, saveUser } from "./UserProvider";
+import { useUsers, saveUser } from "./UserProvider.js";
+//Coffey html temlate insert.
+// edited html
 
 //Coffey html temlate insert.
-//Rebecca made changes and added functionality/eventHub
+//Rebecca made changes to input ids and added functionality/eventHub
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.userForm');
 
@@ -23,8 +25,8 @@ export const userFormComponent = () => {
             if (foundMatchingUser = undefined) {
                 if (password1 === password2) {
                 const newUser = {
-                    "userName": document.querySelector("#userName").value,
-                    "userPassword": document.querySelector("#password1").value
+                    "userName": userName,
+                    "userPassword": password1
                 
                 }
                 saveUser(newUser)
@@ -43,7 +45,7 @@ export const userFormComponent = () => {
             
         }
     }
-    )}
+    )
 
 	const render = () => {
 		contentTarget.innerHTML = `
@@ -53,14 +55,14 @@ export const userFormComponent = () => {
         <label for="">E-MAIL</label>
         <input type="email" id="userName">
         <label for="">Password</label>
-        <input type="password" id="password1>
-        <button>REGISTER</button>
+        <input type="passwaord" id="password1">
+        <a href="url">REGISTER A NEW ACCOUNT</a>
         <label for="">CONFIRM PASSWORD</label>
-        <input type="password" id="password2>
+        <input type="password" id="password2">
     </form>
-    <button id="saveNewUser">SAVE NEW ACCOUNT</button>
+    <button id="saveNewUser">REGISTER</button>
 </div>
 `;
 };
 render();
-
+}
