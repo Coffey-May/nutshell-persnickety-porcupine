@@ -16,7 +16,7 @@ export const getUsers = () => {
         })
 
     }
-
+console.log(parsedUsers)
 export const saveUser = user => {
     fetch('http://localhost:8088/users', {
         method: "POST",

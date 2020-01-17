@@ -31,6 +31,7 @@ export const userFormComponent = () => {
                 saveUser(newUser)
             }
             else {
+                
                 alert ("passwords do not match")
             }
             }
@@ -48,8 +49,9 @@ export const userFormComponent = () => {
 
 	const render = () => {
 		contentTarget.innerHTML = `
-<h1>WELCOME TO NUTSHELL</h1>
-<div>
+
+<div class="userFormDiv">
+<h1 class="welcomeHeader">WELCOME TO NUTSHELL</h1>
     <form action="">
         <label class="userLabels" for="">E-MAIL</label>
         <input type="email" id="userName"><br>
