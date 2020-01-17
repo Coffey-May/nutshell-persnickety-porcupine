@@ -1,22 +1,14 @@
 //Author: Rebecca Patek
 let users = []
 
-export const useUsers = () => {
-    return users;
-};
+export const useUsers = () => users.slice();
+
 
 export const getUsers = () => {
-    return fetch('http://localhost:8088/users', {
-        method: "GET",
+    return fetch("http://localhost:8088/users")
+    .then(res => res.json())
+    .then(parsedUsers => users = parsedUsers)
 }
-    ).then(response => response.json())
-    .then(parsedUsers => {
-            // console.table(parsedNotes);
-            users = parsedUsers.slice()
-        })
-
-    }
-console.log(parsedUsers)
 export const saveUser = user => {
     fetch('http://localhost:8088/users', {
         method: "POST",
