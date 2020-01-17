@@ -1,6 +1,59 @@
+h2{
+    font-family: 'Julius Sans One', sans-serif;
+}
 
 .tasks{
     border:1px solid black;
     height:20vh;
-    background-color: rgb(197, 198, 198);
+    /* background-color: rgb(167, 167, 167); */
+    border:1px solid black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image:linear-gradient(
+        rgba(19, 19, 19, 0.85),
+        rgba(11, 11, 11, 0.85)
+        ),
+         url('https://www.proofhub.com/wp-content/uploads/2019/01/to-do-list-apps.jpg');
 }
+
+.saveTaskBtn{
+    background-color: rgba(224, 254, 216, 0.817);
+    color:rgb(0, 0, 0);
+    border-radius: 10%;
+}
+.deleteTaskBtn{
+    background-color: rgb(247, 6, 6);
+    color:white;
+    border-radius: 10%;
+}
+.editTaskBtn{
+    background-color: rgb(106, 127, 211);
+    color:white;
+    border-radius: 10%;
+}
+.saveTaskBtn:hover {
+    background-color: #73eb77
+}
+.editTaskBtn:hover {
+    background-color: #7395eb
+}
+.deleteTaskBtn:hover {
+    background-color: #b30404
+}
+
+.saveTaskBtn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.editTaskBtn:active {
+    background-color: #0738b5;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  .deleteTaskBtn:active {
+    background-color: #f93030;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
