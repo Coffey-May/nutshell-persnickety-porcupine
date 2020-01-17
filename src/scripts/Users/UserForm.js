@@ -9,9 +9,9 @@ export const LogInForm = () => {
   <div>
       <form action="">
           <label class="userLabels" for="">E-MAIL</label>
-          Email: <input type="email" id="userName"><br>
+          <input type="email" id="userName"><br>
           <label class="userLabels" for="">Password</label>
-          Password: <input type="password" id="password"><br>
+          <input type="password" id="password"><br>
           </form>
           <button id="logInButton">Log In</button>
           <br>
@@ -36,7 +36,7 @@ export const userFormComponent = () => {
         alert("Please register a new Account");
       } else {
         sessionStorage.setItem("activeUser", foundUser.id);
-        const contentTarget = document.querySelector(".renderArea");
+        const contentTarget = document.querySelector(".userForm");
         contentTarget.innerHTML = "";
       }
     }
