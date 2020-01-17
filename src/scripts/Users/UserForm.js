@@ -1,9 +1,7 @@
 import { useUsers, saveUser } from "./UserProvider.js";
-//Coffey html temlate insert.
+
 // Adrian edited html
-
-
-//Coffey html temlate insert.
+//Coffey html template insert.
 //Rebecca made changes to input ids and added functionality/eventHub
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.userForm');
@@ -37,12 +35,12 @@ export const userFormComponent = () => {
             }
             }
             else {
-                alert("Account alread exists")
+                alert("Account already exists")
             }
-        }
-        else {
+            }
+            else {
             alert("Please fill out all fields")
-        }
+            }
             
         }
     }
@@ -53,15 +51,15 @@ export const userFormComponent = () => {
 <h1>WELCOME TO NUTSHELL</h1>
 <div>
     <form action="">
-        <label for="">E-MAIL</label>
+        <label class="userLabels" for="">E-MAIL</label>
         <input type="email" id="userName"><br>
-        <label for="">Password</label>
+        <label class="userLabels" for="">Password</label>
         <input type="password" id="password1"><br>
         <a href="url">REGISTER A NEW ACCOUNT</a><br>
-        <label for="">CONFIRM PASSWORD</label>
+        <label class="userLabels" for="">CONFIRM PASSWORD</label>
         <input type="password" id="password2">
     </form>
-    <button id="saveNewUser">REGISTER</button>
+    <button class="newUserBtn"id="saveNewUser">REGISTER</button>
 </div>
 `
 };
