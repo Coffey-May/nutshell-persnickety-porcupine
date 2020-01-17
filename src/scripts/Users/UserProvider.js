@@ -11,12 +11,16 @@ export const getUsers = () => {
 }
 
 export const saveUser = user => {
-    fetch('http://localhost:8088/users', {
+    return fetch('http://localhost:8088/users', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then((newUser)=>{
+        sessionStorage.setItem("activeUser", newUser.id);
     })
     .then(getUsers)
 }
