@@ -9,9 +9,9 @@ export const LogInForm = () => {
   <div>
       <form action="">
           <label class="userLabels" for="">E-MAIL</label>
-           <input type="email" id="userName"><br>
+          <input type="email" id="userName"><br>
           <label class="userLabels" for="">Password</label>
-           <input type="password" id="password"><br>
+          <input type="password" id="password"><br>
           </form>
           <button id="logInButton">Log In</button>
           <br>
@@ -21,7 +21,7 @@ export const LogInForm = () => {
   }
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".userForm");
-const contentTarget2 = document.querySelector(".hide")
+
 
 export const userFormComponent = () => {
   eventHub.addEventListener("click", clickEvent => {
@@ -38,7 +38,7 @@ export const userFormComponent = () => {
       } else {
         sessionStorage.setItem("activeUser", foundUser.id);
         const contentTarget = document.querySelector(".userForm");
-        contentTarget2.innerHTML = "";
+        contentTarget.innerHTML = "";
       }
     }
     }
