@@ -7,10 +7,10 @@ export const ChatFormComponent = () => {
 
 const render = () => {
 contentTarget.innerHTML = `
-<h4>CHAT</h4>
+<h2>CHAT</h2>
 <div>
     <form action="">
-        <button>Create New Message</button>
+        <button class="addMessageBtn">Create New Message</button>
         <input type="text">
     </form>
 </div>

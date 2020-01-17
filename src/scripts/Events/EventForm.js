@@ -11,10 +11,10 @@ export const EventFormComponent = () => {
 const render = () => {
 
     contentTarget.innerHTML = `
-  <h4>EVENTS</h4>
-  <div>
+  <h2>EVENTS</h2>
+  <div class="eventForm">
       <form action="">
-          <button>Add Article</button><br>
+          <button class="addBtnEvent">Add Article</button><br>
           <label for="">Name</label>
           <input type="text"><br>
           <label for="">Date</label>
@@ -22,7 +22,7 @@ const render = () => {
           <label for="">Location</label>
           <input type="text">
       </form>
-      <button>Save Article</button>
+      <button class="saveBtnEvent">Save Article</button>
   </div>`
   }
   render()
