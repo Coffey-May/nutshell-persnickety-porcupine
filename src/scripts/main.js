@@ -5,6 +5,7 @@ import {ArticleFormComponent} from "./Articles/ArticleForm.js";
 import {ChatFormComponent} from "./Chats/ChatForm.js"
 import { FriendFormComponent } from "./Friends/FriendForm.js";
 import FriendList from "./Friends/FriendList.js"
+// import FriendList from "./Friends/FriendList2.js"
 import { getFriends } from "./Friends/FriendProvider.js"
 import { getUsers } from "./Users/UserProvider.js"
 

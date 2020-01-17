@@ -11,8 +11,8 @@
 import { useFriends } from "./FriendProvider.js"
 import { useUsers } from "../Users/UserProvider.js"
 
-import Friend from "./Friend.js"
-
+import { FriendCard } from "./Friend.js"
+// import { Friend } from "./Friend.js"
 
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".friendsList")
@@ -37,16 +37,24 @@ const FriendList = () => {
         const myFriends = useFriends()
         const matchingUsers = useUsers()
        
-        if (clickEvent.target.id === "saveFriendButton") {
+        if (clickEvent.target.id === "saveBtnFriend") {
 
+            // This filter pulls all the friend joins from the database
+            const allNutshellFriends = myFriends.filter(theJoin => matchingUsers.id === theJoin.joinId)
             
-            const addedFriend = myFriends.filter(theJoin => matchingUsers.id === theJoin.joinId)
+            const type = productTypes.find(type => type.id === product.productTypeId)
+            
+            // const allNutshellFriends = myFriends.find(theJoin => matchingUsers.id === theJoin.joinId)
             // const journalMood = theJournals.filter(theMood => mood === theMood.mood)
 
-            render(addedFriend)
-
+            const activeUser = 4
+            // This filter pulls ONLY the friends that match the activeUsers .id
+            // const allMyFriends = myFriends.filter(onlyMine => activeUser === onlyMine.joinId)
+            // const myFriends = myFriends.filter(onlyMine => activeUser === onlyMine.joinId)
+            render(allNutshellFriends)
+            // render(myFriends)
            
-            console.log(event.target.id)
+            console.log(clickEvent.target.id)
 
             const addFriendEvent = new CustomEvent("saveFriendButtonClicked", {
                 // detail: {
@@ -77,7 +85,7 @@ const FriendList = () => {
 
                             ${
             friends.map(friendObject => {
-                const userHTML = Friend(friendObject)
+                const userHTML = FriendCard(friendObject)
                 return userHTML
             }).join("")
 
@@ -90,7 +98,7 @@ const FriendList = () => {
    `
     };
 
-    render(appFriends)
+    render(myFriends)
 
 }
 

@@ -1,10 +1,11 @@
 // created by Adrian
 
-export const FriendCard = friend => {
+export const FriendCard = friends => {
   return `
     <section class="friendCard">
-      <div class="friendCrdName">${friend.friendName}</div>
-      <button id="deleteFriend--${friend.id}" class="deleteFriendButton">Delete Friend</button>
+    <div class="friendCardName" >TEST VERSION</div>
+      <div class="friendCardName">${friends.friendName}</div>
+      <button id="deleteFriend--${friends.id}" class="deleteFriendButton">Delete Friend</button>
     </section>
   `;
 };
