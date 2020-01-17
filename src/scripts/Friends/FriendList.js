@@ -4,30 +4,112 @@
 // relationship is initiatied by 1) adding a friend by doing a friend text search by name and
 // chosing to add the friend
 // or 2) by clickAdding a friend from the Chats using the click user name and add feature
-// User are the same as friends so we use Users and filter them based on the friends join 
+// Users are the same as friends so we use Users and filter them based on the friends join 
 // the database.json file
 
 
 import { useFriends } from "./FriendProvider.js"
 import { useUsers } from "../Users/UserProvider.js"
-// import FriendComponent from "./Friend.js"
+
+import Friend from "./Friend.js"
+
+
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".friendsList")
 
-const FriendList = () =>   {
+const FriendList = () => {
 
-    // get the join objects to do the filter from the FriendProvider.js
+    // const friendItem = Friend()
+
+    // get the join objects in teh json file called Friends to do the filter
+    // from the FriendProvider.js
     const appFriends = useFriends()
 
     // get the user aka friends from the UserProvider.js to filter only friends
+    // that the current user has joined as friends
     const appStateFriends = useUsers()
-    // const appStateFriends = useFriends()
+
+
+
+    eventHub.addEventListener("click", event => {
+
+        // const theJournals = useJournals()
+        const myFriends = useFriends()
+        const matchingUsers = useUsers()
+       
+        if (event.target.id === "saveFriendButton") {
+
+              // if (joinId === "users.id") {
+                // const joinId = myfriends.userId
+                
+            // const theFriend = friendName
+
+            const addedFriend = myFriends.filter(theJoin => matchingUsers.id === theJoin.joinId)
+            // const journalMood = theJournals.filter(theMood => mood === theMood.mood)
+
+            render(addedFriend)
+
+            // render(journalMood)
+            // }  else   {
+
+            //     console.log("You wish we could be friends")
+
+            // console.log(mood)
+            console.log(event.target.id)
+
+            const addFriendEvent = new CustomEvent("saveFriendButtonClicked", {
+                // detail: {
+
+                //     friend: friend.friendName
+                // }
+            })
+            eventHub.dispatchEvent(addFriendEvent)
+
+        }
+
+    })
+
+
+
+
+    const render = (friends) => {
+        contentTarget.innerHTML += `
+     
+              <div>
+                <div>
+                <h2> My Nutty Friends </h2>
+                </div>
+            
+                <section class="friend__lineItem">     
+                
+                        <div class="friend__item">
+
+                            ${
+            friends.map(friendObject => {
+                const userHTML = Friend(friendObject)
+                return userHTML
+            }).join("")
+
+            }
+                        </div>
+                </section>
+            </div>  
+
+
+   `
+    };
+
+    render(appFriends)
+
+}
+
+export default FriendList
 
 
 //// TESTING THIS AS THE FILTER
     // const journalMood = theJournals.filter(theMood => mood === theMood.mood)
 
-   
+
     // render(journalMood)
 //// TESTING THIS AS THE FILTER
 
@@ -39,7 +121,7 @@ const FriendList = () =>   {
 //  Put code here to filter the friends based on the join table "friends"
 // where the userId = user.id                    and friendName === userEmail
 
-// {
+//
     // "users": [
     //   {
     //     "id": 1,
@@ -61,33 +143,3 @@ const FriendList = () =>   {
     //     "userId": "2"
     //   }
 
-
-
-
-    const render = friends => {
-        contentTarget.innerHTML = `
-        <div>
-            <div>
-            <h2> Nutshell Friends </h2>
-            </div>
-        <section class="friendComponent">     
-        
-        <div class="friend">
-                ${
-            friends.map(friendObject => {
-                const userHTML = Friend(friendObject)
-                return userHTML
-            }).join("")
-            }
-        </div>
-        </section>
-        </div>
-     `
-
-    };
-
-    render(appStateFriends)
-
-}
-
-export default FriendList

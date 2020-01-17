@@ -12,7 +12,7 @@ const render = () => {
 <button>Add Friend</button>
 <input type="text">
 </form>
-<button>Save Friend</button>
+<button id="saveFriendButton">Save Friend</button>
 </div>
 `
 }

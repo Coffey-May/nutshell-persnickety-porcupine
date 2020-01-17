@@ -1,13 +1,18 @@
 // created by Adrian
 
-const Friend = (friend) => {
+const Friend = (friends) => {
   return `
       <section class="friend">
-         
-          <div>${friend.friendName}</div>
-          <button class="friend--delete>Delete</button>
+       <div>${friends.friendName}</div> 
+         <button class="friend--delete">Delete</button>
       </section>
   `
 }
 
 export default Friend
+
+
+
+
+
+
