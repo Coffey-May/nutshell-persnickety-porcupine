@@ -1,0 +1,53 @@
+html{
+  background-color: black;
+}
+
+h1{
+  font-family: 'Julius Sans One', sans-serif;
+  color:white;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1rem;
+}
+a{
+  color:white;
+}
+input{
+  background-color: rgba(171, 171, 171, 0.345);
+}
+.userLabels{
+  color:white;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.hide{
+  display: flex;
+  /* background-color: rgb(89, 89, 89); */
+  justify-content: center;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image:linear-gradient(
+      rgba(19, 19, 19, 0.95),
+      rgba(11, 11, 11, 0.95)
+      ),
+       url('https://thumbs.dreamstime.com/z/seamless-black-gold-art-deco-vector-pattern-background-seamless-black-gold-art-deco-vector-pattern-132199097.jpg');
+}
+
+
+.newUserBtn{
+    background-color: rgb(79, 152, 118);
+    color:white;
+    border-radius: 10%;
+}
+
+.newUserBtn:hover {
+    background-color: #73eb77
+}
+
+
+.newUserBtn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

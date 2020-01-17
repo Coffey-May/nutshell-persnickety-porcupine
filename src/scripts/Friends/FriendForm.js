@@ -7,12 +7,12 @@ const render = () => {
   contentTarget.innerHTML =   
 `
 <div>
-<h4>FRIENDS</h4>
+<h2>FRIENDS</h2>
 <form action="">
-<button>Add Friend</button>
+<button class="addBtnFriend">Add Friend</button>
 <input type="text">
 </form>
-<button id="saveFriendButton">Save Friend</button>
+<button class="saveBtnFriend">Save Friend</button>
 </div>
 `
 }

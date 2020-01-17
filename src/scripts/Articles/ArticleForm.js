@@ -8,10 +8,10 @@ export const ArticleFormComponent = () => {
 
 const render = () => {
     contentTarget.innerHTML =`
-<h4>NEWS</h4>
-<div>
+<h2 class="newsHeader">NEWS</h2>
+<div class="newsForm">
     <form action="">
-        <button>Add Article</button><br>
+        <button class="addBtnArticle">Add Article</button><br>
         <label for="">Name</label>
         <input type="text"><br>
         <label for="">Date</label>
@@ -19,7 +19,7 @@ const render = () => {
         <label for="">Location</label>
         <input type="text">
     </form>
-    <button>Save Article</button>
+    <button class="saveBtnArticle">Save Article</button>
 </div>
 `
 }

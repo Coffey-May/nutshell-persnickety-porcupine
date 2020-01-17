@@ -1,18 +1,10 @@
 // created by Adrian
 
-const Friend = (friends) => {
+export const FriendCard = friend => {
   return `
-      <section class="friend">
-       <div>${friends.friendName}</div> 
-         <button class="friend--delete">Delete</button>
-      </section>
-  `
-}
-
-export default Friend
-
-
-
-
-
-
+    <section class="friendCard">
+      <div class="friendCrdName">${friend.friendName}</div>
+      <button id="deleteFriend--${friend.id}" class="deleteFriendButton">Delete Friend</button>
+    </section>
+  `;
+};
