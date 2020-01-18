@@ -1,48 +1,45 @@
 // created by Adrian
+let events = [];
 
-let events = []
-
-export const useEvents = () => {
-    return events;
-};
-export const editEvents = (eventsObject) => {
-  return fetch(`http://localhost:8088/events/${eventsObject.id}`, {
-      method: "PUT",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(eventsObject)
-  })
-      .then(getEvents)
-
-}
-
-export const deleteEvents = (eventsId) => {
-  return fetch(`http://localhost:8088/Events/${eventsId}`, {
-      method: "DELETE"
-  })
-  .then(getEvents)
-}
+export const useEvents = () => events.slice();
 
 export const getEvents = () => {
-    return fetch('http://localhost:8088/events', {
-        method: "GET",
-}
-    ).then(response => response.json())
-    .then(parsedEvents => {
-            // console.table(parsedEvents);
-            events = parsedEvents.slice()
-        })
-
-    }
+  return fetch("http://localhost:8088/events")
+    .then(res => res.json())
+    .then(resp => {
+      events = resp
+        .slice()
+        .sort(
+          (currentEvent, nextEvent) =>
+            Date.parse(currentEvent.date) - Date.parse(nextEvent.date)
+        );
+      return events;
+    });
+};
 
 export const saveEvent = event => {
-    fetch('http://localhost:8088/events', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(event)
-    })
-    .then(getEvents)
-}
+  return fetch("http://localhost:8088/events", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(event)
+  }).then(getEvents);
+};
+
+export const deleteEvent = eventId => {
+  return fetch(`http://localhost:8088/events/${eventId}`, {
+    method: "DELETE"
+  }).then(getEvents);
+};
+
+export const editEvent = event => {
+  return fetch(`http://localhost:8088/events/${event.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(event)
+  }).then(getEvents);
+};
+
