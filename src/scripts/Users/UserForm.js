@@ -30,9 +30,6 @@ export const userFormComponent = () => {
     // const password2 = document.querySelector("#password2").value;
     //    compare code
     if (clickEvent.target.id === "logInButton") {
-        // if (sessionStorage != null) {
-        //     return NutShellDashBoard()
-        // } 
       const users = useUsers();
       console.log(users);
       const userName = document.querySelector("#userName").value;
