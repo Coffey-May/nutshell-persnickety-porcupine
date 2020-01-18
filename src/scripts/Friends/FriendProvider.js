@@ -1,4 +1,4 @@
-//Author: Rebecca Patek
+//Author: Eli Tamez
 let friends = []
 
 export const useFriends = () => {
@@ -6,19 +6,19 @@ export const useFriends = () => {
 };
 
 export const getFriends = () => {
-    return fetch('http://localhost:8088/friends', {
+    return fetch('http://localhost:8080/friends', {
         method: "GET",
 }
     ).then(response => response.json())
     .then(parsedFriends => {
             // console.table(parsedNotes);
-            users = parsedFriends.slice()
+            friends = parsedFriends.slice()
         })
 
     }
 
-export const saveUser = user => {
-    fetch('http://localhost:8088/friendsfriends', {
+export const saveFriend = friend => {
+    fetch('http://localhost:8080/friends', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

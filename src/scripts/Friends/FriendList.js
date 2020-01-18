@@ -4,90 +4,132 @@
 // relationship is initiatied by 1) adding a friend by doing a friend text search by name and
 // chosing to add the friend
 // or 2) by clickAdding a friend from the Chats using the click user name and add feature
-// User are the same as friends so we use Users and filter them based on the friends join 
+// Users are the same as friends so we use Users and filter them based on the friends join 
 // the database.json file
 
 
 import { useFriends } from "./FriendProvider.js"
 import { useUsers } from "../Users/UserProvider.js"
-// import FriendComponent from "./Friend.js"
+
+import { FriendCard } from "./Friend.js"
+// import { Friend } from "./Friend.js"
+
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".friendsList")
 
-const FriendList = () =>   {
+const FriendList = () => {
 
-    // get the join objects to do the filter from the FriendProvider.js
-    const appFriends = useFriends()
+    // const friendItem = Friend()
 
-    // get the user aka friends from the UserProvider.js to filter only friends
+    /// get the join objects in the json file called Friends to do the filter
+    /// from the FriendProvider.js
+   /// On 1-17-20 Audry said its better to make the userID in teh json join = the friends .id and to set up another Id as the 
+   ///initiatorId of the AvtiveUser to help with the fetch calls and minimize the filters etc 
+    // The initiator is the activeUser that is logged in to use the Nutshell site
+    /// 
+    /// "friends":[ 
+    ///     { 
+    ///     "id":1,
+    ///     "userId":2,             <===== Make this equal to the users.id of the users object
+    ///     "initiatorId":1         <===== Make this the ActiveUser aka the logged in user 
+    ///     },
+
+
+
+    // const appFriends = useFriends()
+    const joinedFriends = useFriends()
     const appStateFriends = useUsers()
-    // const appStateFriends = useFriends()
+
+    const allFriends = useFriends()
+    console.log(allFriends)
+
+    const matchingUsers = useUsers()
+    console.log(matchingUsers)
+
+    ///Audry said to make the userID as the friends ID and to set up another iD as the 
+   ///initiatorId which helps with the fetch
+    ///so we can get all the details out of the filters etc to eliminate steps.
+    ///
 
 
-//// TESTING THIS AS THE FILTER
-    // const journalMood = theJournals.filter(theMood => mood === theMood.mood)
+    // const allNutshellFriends = myFriends.filter(theJoin => matchingUsers.id === parseInt(theJoin.initiatorId))
+    const usersWithFriends = allFriends.filter(theJoin => parseInt(matchingUsers.id) !== theJoin.initiatorId)
+    console.log(usersWithFriends)
+  
 
-   
-    // render(journalMood)
-//// TESTING THIS AS THE FILTER
+    const activeUserInitiatorId = 4
+    console.log(activeUserInitiatorId)
+    // This filter pulls ONLY the friends that match the activeUser 
+    const activeUserFriends =  usersWithFriends.filter(usersWithFriends => activeUserInitiatorId === parseInt(usersWithFriends.initiatorId))
+    console.log(activeUserFriends)
+    // console.log(matchingUsers.id)
+  
+    
+    
 
-    // Add the eventHub lister
-    // eventHub.addEventListener("activeUserLoggedIn", event => {
-    //     render([])
-    // })
+    eventHub.addEventListener("click", clickEvent => {
+       
+        if (clickEvent.target.id === "saveBtnFriend") {
 
-//  Put code here to filter the friends based on the join table "friends"
-// where the userId = user.id                    and friendName === userEmail
+                
+            
+            console.log(activeUserFriends)
+            // const myFriends = myFriends.filter(onlyMine => activeUser === onlyMine.joinId)
+            
+            // render(allNutshellFriends)
+            // render(activeUserFriends)
 
-// {
-    // "users": [
-    //   {
-    //     "id": 1,
-    //     "userName": "adi@nss.com",
-    //     "userEmail": "adi@nss.com",
-    //     "userPassword": "1234"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "userName": "cof@nss.com",
-    //     "userEmail": "cof@nss.com",
-    //     "userPassword": "1234"
-    //   }
-    // ],
-    // "friends": [
-    //   {
-    //     "id": 1,
-    //     "friendName": "coffee@nss.com",
-    //     "userId": "2"
-    //   }
+            console.log(clickEvent.target.id)
+
+            const addFriendEvent = new CustomEvent("saveFriendButtonClicked", {
+                // detail: {
+
+                //     friend: friend.friendName
+                // }
+            })
+            eventHub.dispatchEvent(addFriendEvent)
+
+        }
+
+    })
 
 
 
 
-    const render = friends => {
-        contentTarget.innerHTML = `
-        <div>
-            <div>
-            <h2> Nutshell Friends </h2>
-            </div>
-        <section class="friendComponent">     
-        
-        <div class="friend">
-                ${
+    const render = (friends) => {
+        contentTarget.innerHTML += `
+        <br>
+              <div>
+                <div>
+                <h2> My Nutty Friends </h2>
+                </div>
+            <br>
+                <section class="friend__lineItem">     
+                
+                        <div class="friend__item">
+
+                            ${
             friends.map(friendObject => {
-                const userHTML = Friend(friendObject)
+                const userHTML = FriendCard(friendObject)
                 return userHTML
             }).join("")
-            }
-        </div>
-        </section>
-        </div>
-     `
 
+            }
+                        </div>
+                </section>
+            </div>  
+
+
+   `
     };
 
-    render(appStateFriends)
+    render(activeUserFriends)
 
 }
 
 export default FriendList
+
+
+
+
+
