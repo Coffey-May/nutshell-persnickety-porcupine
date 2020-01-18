@@ -19,7 +19,7 @@ const contentTarget = document.querySelector(".friendsList")
 
 const FriendList = () => {
 
-    // const friendItem = Friend()
+   
 
     /// get the join objects in the json file called Friends to do the filter
     /// from the FriendProvider.js
@@ -41,10 +41,10 @@ const FriendList = () => {
     const appStateFriends = useUsers()
 
     const allFriends = useFriends()
-    console.log(allFriends)
+    // console.log(allFriends)
 
     const matchingUsers = useUsers()
-    console.log(matchingUsers)
+    // console.log(matchingUsers)
 
     ///Audry said to make the userID as the friends ID and to set up another iD as the 
    ///initiatorId which helps with the fetch
@@ -52,21 +52,18 @@ const FriendList = () => {
     ///
 
 
-    // const allNutshellFriends = myFriends.filter(theJoin => matchingUsers.id === parseInt(theJoin.initiatorId))
-    const usersWithFriends = allFriends.filter(theJoin => parseInt(matchingUsers.id) !== theJoin.initiatorId)
-    console.log(usersWithFriends)
-  
+        /// Hard coded the ActiveUser id here.  Need to get from session object upon login
+    /// Testing with Sue id 7 as the active user
+    
+    const activeUserInitiatorId = 7
+    console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
 
-    const activeUserInitiatorId = 4
-    console.log(activeUserInitiatorId)
     // This filter pulls ONLY the friends that match the activeUser 
-    const activeUserFriends =  usersWithFriends.filter(usersWithFriends => activeUserInitiatorId === parseInt(usersWithFriends.initiatorId))
-    console.log(activeUserFriends)
-    // console.log(matchingUsers.id)
-  
-    
-    
+    const activeUserFriends =  allFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
+    // console.log(activeUserFriends)
+ 
 
+   
     eventHub.addEventListener("click", clickEvent => {
        
         if (clickEvent.target.id === "saveBtnFriend") {
@@ -101,7 +98,7 @@ const FriendList = () => {
         <br>
               <div>
                 <div>
-                <h2> My Nutty Friends </h2>
+                <h2>  </h2>
                 </div>
             <br>
                 <section class="friend__lineItem">     
@@ -111,6 +108,7 @@ const FriendList = () => {
                             ${
             friends.map(friendObject => {
                 const userHTML = FriendCard(friendObject)
+                // console.log(`This is the User Id of the ActiveUsers friend ${friends.userId}`)
                 return userHTML
             }).join("")
 

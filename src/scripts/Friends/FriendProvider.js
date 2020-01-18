@@ -6,7 +6,7 @@ export const useFriends = () => {
 };
 
 export const getFriends = () => {
-    return fetch('http://localhost:8080/friends', {
+    return fetch('http://localhost:8080/friends?_expand=user', {
         method: "GET",
 }
     ).then(response => response.json())
