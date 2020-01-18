@@ -1,0 +1,108 @@
+{ 
+  "users":[ 
+  { 
+  "id":1,
+  "userName":"adi@nss.com",
+  "userEmail":"adi@nss.com",
+  "userPassword":"1234"
+  },
+  { 
+  "id":2,
+  "userName":"cof@nss.com",
+  "userEmail":"cof@nss.com",
+  "userPassword":"1234"
+  },
+  { 
+  "id":3,
+  "userName":"eli@nss.com",
+  "userEmail":"eli@nss.com",
+  "userPassword":"1234"
+  },
+  { 
+  "id":4,
+  "userName":"reb@nss.com",
+  "userEmail":"reb@nss.com",
+  "userPassword":"1234"
+  },
+  { 
+  "id":5,
+  "userName":"joe@nss.com",
+  "userEmail":"joe@nss.com",
+  "userPassword":"1234"
+  },
+  { 
+  "id":6,
+  "userName":"sally@nss.com",
+  "userEmail":"sally@nss.com",
+  "userPassword":"1234"
+  },
+  { 
+  "id":7,
+  "userName":"sue@nss.com",
+  "userEmail":"sue@nss.com",
+  "userPassword":"1234"
+  }
+  ],
+  "friends":[ 
+    { 
+          "id": 1,
+          "userId": 2,
+  "initiatorId":1
+           
+  },
+  { 
+          "id": 1,
+          "userId": 6,
+  "initiatorId":5
+          
+  },
+  { 
+         "id": 1,
+         "userId": 4,
+  "initiatorId":6
+           
+  },
+  { 
+       "id": 1,
+       "userId": 6,
+  "initiatorId":7
+           
+  }
+  ],
+  "events":[ 
+  { 
+  "id":1,
+  "eventName":"varcharacter",
+  "dateTime":"datetime",
+  "eventLocation":"varcharacter",
+  "userId":1
+  }
+  ],
+  "articles":[ 
+  { 
+  "id":1,
+  "articleTitle":"varcharacter",
+  "articleSynopsis":"varcharacter",
+  "articleURL":"varcharacter",
+  "postDate":"timestamp",
+  "userId":1
+  }
+  ],
+  "chat":[ 
+  { 
+  "id":1,
+  "userId":1,
+  "chatText":"varcharacter",
+  "chatDateTime":"datetime"
+  }
+  ],
+  "tasks":[ 
+  { 
+  "id":1,
+  "taskName":"varcharacter",
+  "taskETA":"date",
+  "taskCompletion":"varcharacter",
+  "userId":1
+  }
+  ]
+  }

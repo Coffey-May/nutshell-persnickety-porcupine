@@ -6,7 +6,7 @@ export const useFriends = () => {
 };
 
 export const getFriends = () => {
-    return fetch('http://localhost:8088/friends', {
+    return fetch('http://localhost:8080/friends', {
         method: "GET",
 }
     ).then(response => response.json())
@@ -18,7 +18,7 @@ export const getFriends = () => {
     }
 
 export const saveFriend = friend => {
-    fetch('http://localhost:8088/friends', {
+    fetch('http://localhost:8080/friends', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
