@@ -3,11 +3,11 @@ import {taskFormComponent} from "./Tasks/TaskForm.js";
 import {EventFormComponent} from "./Events/EventForm.js";
 import {ArticleFormComponent} from "./Articles/ArticleForm.js";
 import {ChatFormComponent} from "./Chats/ChatForm.js"
-import { FriendFormComponent } from "./Friends/FriendForm.js";
+import FriendFormComponent from "./Friends/FriendForm.js";
 import FriendList from "./Friends/FriendList.js"
 // import FriendList from "./Friends/FriendList2.js"
-import { getFriends } from "./Friends/FriendProvider.js"
-import { getUsers } from "./Users/UserProvider.js"
+import { getFriends, saveFriend, deleteFriend } from "./Friends/FriendProvider.js"
+import { getUsers, saveUser, useUsers } from "./Users/UserProvider.js"
 
 // import { useFriends } from "./Friends/FriendProvider.js"
 // import { useFriends } from "./FriendProvider.js"
@@ -24,6 +24,7 @@ taskFormComponent()
 ArticleFormComponent()
 ChatFormComponent()
 FriendFormComponent()
+// useUsers()
 
 // useFriends()
 // getFriends()
@@ -32,4 +33,5 @@ FriendFormComponent()
 
 getFriends()
     .then(getUsers)
+    // .then(useUsers)
     .then(FriendList)

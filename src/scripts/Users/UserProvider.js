@@ -4,10 +4,16 @@ let users = []
 export const useUsers = () => users.slice();
 
 
+
+
 export const getUsers = () => {
-    return fetch("http://localhost:8080/users")
-    .then(res => res.json())
-    .then(parsedUsers => users = parsedUsers)
+    return fetch('http://localhost:8088/users?_expand=userId', {
+        method: "GET",
+}   
+    ).then(res => res.json())
+    .then(parsedUsers => {
+         users = parsedUsers.slice()
+ })
 }
 
 export const saveUser = user => {
@@ -19,8 +25,8 @@ export const saveUser = user => {
         body: JSON.stringify(user)
     })
     .then(res => res.json())
-    .then((newUser)=>{
-        sessionStorage.setItem("activeUser", newUser.id);
-    })
+    // .then((newUser)=>{
+    //     sessionStorage.setItem("activeUser", newUser.id);
+    // })
     .then(getUsers)
 }
