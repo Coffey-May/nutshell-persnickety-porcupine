@@ -32,6 +32,7 @@ export const NutShellDashBoard = () => {
   .then(EventList)
   .then(ChatFormComponent)
   // .then(AddFriendComponent)
+  .then(FriendFormComponent)
   .then(getFriends)
   .then(FriendList)
 }
@@ -50,6 +51,4 @@ eventHub.addEventListener("newUserRegistered", event => {
 
 
 
-// getFriends()
-//     .then(getUsers)
-//     .then(FriendList)
+

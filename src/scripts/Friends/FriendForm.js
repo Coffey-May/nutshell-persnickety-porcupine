@@ -1,7 +1,9 @@
 // Form render HTML created by Adrian
 
 // Logic Author: Eli Tamez cohort 37
-// Purpose of Module :
+// Purpose of Module : to allow the logged in user to add friends to his group of friends by typing their userName
+// which is an email account.  They system validates if the useName is a current site member and if not notifies
+// the user to try again
 
 
 import { useFriends, saveFriend, getFriends } from "./FriendProvider.js"
@@ -9,52 +11,18 @@ import { useUsers, saveUser } from "../Users/UserProvider.js"
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.friends');
 
-
-
-
+// This sets the User to the session activeUser
 let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
 
 
 export const FriendFormComponent = () => {
 
-  eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "saveBtnFriend") {
-      // console.log(clickEvent.target.id)
-
-      // Make a new object representation of a friend    
-      const allFriendsArray = useFriends()
-      // console.log(allFriendsArray)
-      const allUsersArray = useUsers()
-      // console.log(allUsersArray)
-
-
-
-      //This code creates the new friend object in the JSON file
-      // const friendToAddId = foundUser.id
-
-      const createNewFriendJoin = {
-        // Key/value pairs here
-
-        // friend: document.querySelector("#friend-added").value
-
-        /// need to set friends.initiatorId === activeUserId aka users.id from the Users object
-        /// need to set friends.userId === users.id  
-
-
-      }
-
-    }
-
-  })
-
 
   eventHub.addEventListener("click", clickEvent => {
-
 
     if (clickEvent.target.id === "saveBtnFriend") {
 
       const users = useUsers();
-      // console.log(users);
 
       const userName = document.querySelector("#friend-added").value;
       const foundUser = users.find(user => user.userName === userName);
@@ -63,34 +31,27 @@ export const FriendFormComponent = () => {
         alert("User not in system. Try new spelling");
 
       } else {
-        // sessionStorage.setItem("activeUser", foundUser.id);
+        
         const contentTarget = document.querySelector(".friends");
-
         const friendToAddId = foundUser.id
 
+        /// Populate the friends object  
         const createNewFriendJoin = {
-          // Key/value pairs here
 
-          // friend: document.querySelector("#friend-added").value
-          /// joe@nss.com is user.id 5, eli@nss.com is user.id 3
-          /// need to set friends.initiatorId === activeUserId aka users.id from the Users object
-          /// need to set friends.userId === users.id  
           userId: friendToAddId,
-          initiatorId: 3
-
+          initiatorId: activeUserInitiatorId
 
         }
 
 
         saveFriend(createNewFriendJoin).then(
           () => {
-
+            /// Important to get the latest friends to do the render here.  Without it there is a lag in application state
+            /// or the friends listed will be one transaction behind
             const afterSaveFriends = useFriends()
-            // const reallyUpdatedFriendAfterSave
-
             const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
             const message = new CustomEvent("newFriendJoinCreated")
-            // console.log(`newFriend Component Here!!!`)
+         
             eventHub.dispatchEvent(message)
             render(reallyUpdatedFriendAfterSave)
           }
@@ -102,8 +63,6 @@ export const FriendFormComponent = () => {
 
   )
 
-
-  // const FriendFormComponent = () => {
 
   const render = () => {
     contentTarget.innerHTML = `
@@ -126,7 +85,7 @@ export const FriendFormComponent = () => {
 }
 
 
-// export default FriendFormComponent
+
 
 
 
