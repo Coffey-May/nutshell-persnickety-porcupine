@@ -24,45 +24,6 @@ const FriendList = () =>   {
     // const appStateFriends = useFriends()
 
 
-//// TESTING THIS AS THE FILTER
-    // const journalMood = theJournals.filter(theMood => mood === theMood.mood)
-
-   
-    // render(journalMood)
-//// TESTING THIS AS THE FILTER
-
-    // Add the eventHub lister
-    // eventHub.addEventListener("activeUserLoggedIn", event => {
-    //     render([])
-    // })
-
-//  Put code here to filter the friends based on the join table "friends"
-// where the userId = user.id                    and friendName === userEmail
-
-// {
-    // "users": [
-    //   {
-    //     "id": 1,
-    //     "userName": "adi@nss.com",
-    //     "userEmail": "adi@nss.com",
-    //     "userPassword": "1234"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "userName": "cof@nss.com",
-    //     "userEmail": "cof@nss.com",
-    //     "userPassword": "1234"
-    //   }
-    // ],
-    // "friends": [
-    //   {
-    //     "id": 1,
-    //     "friendName": "coffee@nss.com",
-    //     "userId": "2"
-    //   }
-
-
-
 
     const render = friends => {
         contentTarget.innerHTML = `

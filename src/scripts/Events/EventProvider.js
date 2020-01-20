@@ -3,8 +3,10 @@
 let events = []
 
 export const useEvents = () => {
-    return events;
+    return events.slice();
 };
+
+
 export const editEvents = (eventsObject) => {
   return fetch(`http://localhost:8088/events/${eventsObject.id}`, {
       method: "PUT",
@@ -30,7 +32,7 @@ export const getEvents = () => {
 }
     ).then(response => response.json())
     .then(parsedEvents => {
-            // console.table(parsedEvents);
+           
             events = parsedEvents.slice()
         })
 
@@ -46,3 +48,4 @@ export const saveEvent = event => {
     })
     .then(getEvents)
 }
+

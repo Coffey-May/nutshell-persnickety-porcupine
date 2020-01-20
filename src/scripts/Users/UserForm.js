@@ -3,10 +3,16 @@ import { useUsers, saveUser } from "./UserProvider.js";
 // Adrian edited html
 //Coffey html template insert.
 //Rebecca made changes to input ids and added functionality/eventHub
+//Coffey worked on login functionality
+
+
+
+
 export const LogInForm = () => {
     contentTarget.innerHTML = `
+  
+  <div class="userFormDiv">
   <h1>WELCOME TO NUTSHELL</h1>
-  <div>
       <form action="">
           <label class="userLabels" for="">E-MAIL</label>
           <input type="email" id="userName"><br>
@@ -20,8 +26,9 @@ export const LogInForm = () => {
   `
   }
 const eventHub = document.querySelector(".container");
-const contentTarget = document.querySelector(".userForm");
 
+ const contentTarget = document.querySelector(".hide")
+const mainContent = document.querySelector('#hidden')
 
 export const userFormComponent = () => {
   eventHub.addEventListener("click", clickEvent => {
@@ -37,12 +44,11 @@ export const userFormComponent = () => {
         alert("Please register a new Account");
       } else {
         sessionStorage.setItem("activeUser", foundUser.id);
-        const contentTarget = document.querySelector(".userForm");
+        // const contentTarget = document.querySelector(".hide");
         contentTarget.innerHTML = "";
       }
     }
-    }
-    )
+  })
 }
 
 
