@@ -13,13 +13,14 @@ export const taskFormComponent = () => {
             if (clickEvent.target.id === "saveTaskBtn") {
              
                 // Get what user entered
-                const newTask = document.querySelector(".taskInput").value
+                
                 
                 const newTaskObject = {
-                    "id": Math.floor(Math.random() * 1000) + 4,
-                    "task": newTask
+                    "taskName": document.querySelector(".taskInput").value,
+                    "taskETA": document.querySelector(".taskETA").value, 
+                    "taskCompletion": document.getElementById("checked").checked,              
+                    "userId": sessionStorage.getItem(activeUser),
                 }
-                
                 
                 // Change the app state
                 saveTask(newTaskObject)
@@ -28,8 +29,8 @@ export const taskFormComponent = () => {
                 const message = new CustomEvent("newTaskCreated")
                 eventHub.dispatchEvent(message)
             }
-        }
-        )
+        
+        
 
 const render = () => {
     contentTarget.innerHTML =`
@@ -38,6 +39,9 @@ const render = () => {
         <form action="">
             <label for="">Tasks</label>
             <input class="taskInput" type="text">
+            <label for="">Estimated completion date</label>
+            <input class="taskETA" type="date">
+            <div id ="checked" class="tasksCardCompletion" input type="checkbox" value="completed"></div>
              </form>
             <button id="saveTaskBtn">Save</button>
             <button class="editTaskBtn">Edit</button>
@@ -46,4 +50,4 @@ const render = () => {
     </div>`
 }
 render()
-};
+        })}
