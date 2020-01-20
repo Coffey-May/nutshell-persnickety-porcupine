@@ -15,9 +15,9 @@ import { FriendCard } from "./Friend.js"
 // import { Friend } from "./Friend.js"
 
 const eventHub = document.querySelector(".container");
-const contentTarget = document.querySelector(".friendsList")
+const contentTarget = document.querySelector(".friends_list")
 
-const FriendList = () => {
+export const FriendList = () => {
 
     
     /// get the join objects in the json file called Friends to do the filter
@@ -57,36 +57,16 @@ const FriendList = () => {
     /// Hard coded the ActiveUser id here.  Need to get from session object upon login
     /// Testing with Sue id 7 as the active user
 
-    const activeUserInitiatorId = 7
-
+    const activeUserInitiatorId = 3
+    // const activeUserInitiatorId = activeUser
 
     console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
 
     // This filter pulls ONLY the friends that match the activeUser 
-    const activeUserFriends = allFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
-    console.log(activeUserFriends)
+    const activeUserFriendsAtLogin = allFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
+    console.log(activeUserFriendsAtLogin)
 
-
-
-    // eventHub.addEventListener("click", clickEvent => {
-
-    //     if (clickEvent.target.id === "saveBtnFriend") {
-
-    //         console.log(activeUserFriends)
-
-    //         console.log(clickEvent.target.id)
-
-    //         const addFriendEvent = new CustomEvent("saveFriendButtonClicked", {
-    //             // detail: {
-
-    //             //     friend: friend.friendName
-    //             // }
-    //         })
-    //         // eventHub.dispatchEvent(addFriendEvent)
-
-    //     }
-
-    // })
+    
 
     eventHub.addEventListener("click", clickEvent => {
 
@@ -114,7 +94,7 @@ const FriendList = () => {
             // console.log(activeUserFriends)
 
             // const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === activeUserInitiatorId)
-            const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === parsedUserId)
+            const deletableFriends = activeUserFriendsAtLogin.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === parsedUserId)
             console.log(deletableFriends)
 
             const deletableFriendObject = deletableFriends.filter(delId => delId.initiatorId === activeUserInitiatorId)
@@ -135,46 +115,37 @@ const FriendList = () => {
             console.log(deleteId2)
 
 
-            // function checkEqualTo(delId) {
-            //     return delId = parsedUserId;
-            //   }
-
-            // const getDeleteId = () => {
-
-            //     if(deletableXFactor.some(checkEqualTo) = true)  {
-            //     console.log(parsedUserId)
-
-            //     }   
-            
-            // }
-
-
-            // console.log(friends.userId)
+         
             deleteFriend(deleteId2).then(
                 () => {
-
-                    const theUpdatedFriends = useFriends()
+                    const allFriendsPreDelete = useFriends()
+                    const activeUserFriendsBeforeDelete = allFriendsPreDelete.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
+                    console.log(activeUserFriendsBeforeDelete)
+                    const theUpdatedFriends = activeUserFriendsBeforeDelete
                     render(theUpdatedFriends)
-                    // render(deletableFriends)
+                    
                 }
             )
         }
     }) 
 
+    const nowFriends = useFriends()
+    const activeUserFriendsUpdated = nowFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
     const renderFriendsAgain = () => {
-        const allFriends = useFriends()
+        const allFriends = activeUserFriendsUpdated 
         render(allFriends)
     
     }
     
-    eventHub.addEventListener("saveFriendButtonClicked", event => {
+    eventHub.addEventListener("newFriendJoinCreated", event => {
       renderFriendsAgain()
     
     })
 
 
-    const render = (friends) => {
-        contentTarget.innerHTML += `
+    const render = (friends) => 
+    {
+        contentTarget.innerHTML = `
         <br>
               <div>
                 <div>
@@ -188,7 +159,7 @@ const FriendList = () => {
                             ${
             friends.map(friendObject => {
                 const userHTML = FriendCard(friendObject)
-                // console.log(`This is the User Id of the ActiveUsers friend ${friends.userId}`)
+               
                 return userHTML
             }).join("")
 
@@ -205,7 +176,7 @@ const FriendList = () => {
 
 }
 
-export default FriendList
+// export default FriendList
 
 
 
