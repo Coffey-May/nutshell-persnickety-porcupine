@@ -3,8 +3,8 @@ import {taskFormComponent} from "./Tasks/TaskForm.js";
 import {EventFormComponent} from "./Events/EventForm.js";
 import {ArticleFormComponent} from "./Articles/ArticleForm.js";
 import {ChatFormComponent} from "./Chats/ChatForm.js"
-import { FriendFormComponent } from "./Friends/FriendForm.js";
-import FriendList from "./Friends/FriendList.js"
+import {FriendFormComponent,} from "./Friends/FriendForm.js";
+import {FriendList} from "./Friends/FriendList.js"
 // import FriendList from "./Friends/FriendList2.js"
 import { getFriends } from "./Friends/FriendProvider.js"
 import { getUsers } from "./Users/UserProvider.js"
@@ -20,7 +20,7 @@ const LogInLoad = () => {
   .then(RegisterNewAccountForm)
   .then(RegisterNewAccount)
   .then(userFormComponent)
-  
+
 }
 export const NutShellDashBoard = () => {
   return getUsers()
@@ -29,7 +29,9 @@ export const NutShellDashBoard = () => {
   .then(ArticleList)
   .then(ChatFormComponent)
   .then(FriendFormComponent)
-  
+  // .then(AddFriendComponent)
+  .then(getFriends)
+  .then(FriendList)
 }
 if (sessionStorage.hasOwnProperty("activeUser")) {
   NutShellDashBoard()
@@ -38,9 +40,6 @@ if (sessionStorage.hasOwnProperty("activeUser")) {
   }
 
 
-// useFriends()
-// getFriends()
-// getUsers().then(FriendList())
 
 
 // getFriends()
