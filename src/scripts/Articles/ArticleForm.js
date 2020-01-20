@@ -41,10 +41,12 @@ const render = () => {
     <form action="">
         <label for="">Name</label>
         <input type="text"><br>
+        <label for="">Synopsis</label>
+        <input type="text"><br>
+        <label for="">URL</label>
+        <input type="text">
         <label for="">Date</label>
         <input type="date"><br>
-        <label for="">Location</label>
-        <input type="text">
     </form>
     <button id="saveBtnArticle">Save Article</button>
 </div>

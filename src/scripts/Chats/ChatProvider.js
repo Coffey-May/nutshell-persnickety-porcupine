@@ -2,23 +2,22 @@
 
 let chats = []
 
-export const useChats = () => {
-    return chats;
-};
-export const editChats = (chatsObject) => {
-  return fetch(`http://localhost:8088/chats/${chatsObject.id}`, {
+export const useChat = () => chats.slice()
+
+export const editChat = (chatsObject) => {
+  return fetch(`http://localhost:8088/chat/${chatsObject.id}`, {
       method: "PUT",
       headers: {
           "Content-Type": "application/json"
       },
       body: JSON.stringify(chatsObject)
   })
-      .then(getChats)
+      .then(getChat)
 
 }
 
-export const getChats = () => {
-    return fetch('http://localhost:8088/chats', {
+export const getChat = () => {
+    return fetch('http://localhost:8088/chat', {
         method: "GET",
 }
     ).then(response => response.json())
@@ -30,12 +29,12 @@ export const getChats = () => {
     }
 
 export const saveChat = chat => {
-    fetch('http://localhost:8088/chats', {
+    fetch('http://localhost:8088/chat', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(chat)
-    })
-    .then(getChats)
+    }).then(res => res.json())
+    .then(getChat)
 }
