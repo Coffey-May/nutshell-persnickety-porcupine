@@ -9,6 +9,7 @@ import {FriendList} from "./Friends/FriendList.js"
 import { getFriends } from "./Friends/FriendProvider.js"
 import { getUsers } from "./Users/UserProvider.js"
 import ArticleList from "./Articles/ArticleList.js"
+import { EventList } from "./Events/EventList.js";
 // import { useFriends } from "./Friends/FriendProvider.js"
 // import { useFriends } from "./FriendProvider.js"
 // import { useUsers } from "../Users/UserProvider.js"
