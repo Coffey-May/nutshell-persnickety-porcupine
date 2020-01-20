@@ -6,7 +6,7 @@ const contentTarget = document.querySelector('.friends');
 
 
 
-
+  let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
 
 
 // export const AddFriendComponent = () => {
@@ -148,15 +148,23 @@ export const FriendFormComponent = () => {
           /// need to set friends.userId === users.id  
           userId: friendToAddId,
           initiatorId: 3
+
+          
         }
         // Change API state and application state
         // This is the first saveFriend eventListner
         saveFriend(createNewFriendJoin).then(
           () => {
+
+            const afterSaveFriends = useFriends()
+            // const reallyUpdatedFriendAfterSave
+
+            const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel =>  parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
             const message = new CustomEvent("newFriendJoinCreated")
             console.log(`newFriend Component Here!!!`)
             eventHub.dispatchEvent(message)
             //  FriendFormComponent()
+            render(reallyUpdatedFriendAfterSave)
           }
         )
 

@@ -43,7 +43,7 @@ export const FriendList = () => {
     // render(loginUpdatedFriends)
     const allFriends = useFriends()
     // render(allFriends)
-    // console.log(allFriends)
+    console.log(allFriends)
 
     // const matchingUsers = useUsers()
     // console.log(matchingUsers)
@@ -56,17 +56,21 @@ export const FriendList = () => {
 
     /// Hard coded the ActiveUser id here.  Need to get from session object upon login
     /// Testing with Sue id 7 as the active user
+    // const activeUserInitiatorId = null
+    let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
 
-    const activeUserInitiatorId = 3
+    // const activeUserInitiatorId = 3
     // const activeUserInitiatorId = activeUser
 
     console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
 
     // This filter pulls ONLY the friends that match the activeUser 
-    const activeUserFriendsAtLogin = allFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
+    const activeUserFriendsAtLogin = allFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
+
     console.log(activeUserFriendsAtLogin)
 
-    
+    // render(activeUserFriendsAtLogin)
+
 
     eventHub.addEventListener("click", clickEvent => {
 
@@ -94,21 +98,23 @@ export const FriendList = () => {
             // console.log(activeUserFriends)
 
             // const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === activeUserInitiatorId)
-            const deletableFriends = activeUserFriendsAtLogin.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === parsedUserId)
+            const allFriendsBeforeDelete = useFriends()
+            
+            const deletableFriends = allFriendsBeforeDelete.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === parsedUserId)
             console.log(deletableFriends)
 
-            const deletableFriendObject = deletableFriends.filter(delId => delId.initiatorId === activeUserInitiatorId)
+            const deletableFriendObject = deletableFriends.filter(delId => delId.initiatorId === parseInt(activeUserInitiatorId))
             console.log(deletableFriendObject)
 
-            const deletableXFactor = deletableFriends.filter(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
-            console.log(deletableXFactor)
+            // const deletableXFactor = deletableFriends.filter(delIt => delIt.userId === parsedUserId && delIt.initiatorId === parseInt(activeUserInitiatorId))
+            // console.log(deletableXFactor)
 
-            const deletableXFactor1 = deletableFriends.filter(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
-            console.log(deletableXFactor)
+            // const deletableXFactor1 = deletableFriends.filter(delIt => delIt.userId === parsedUserId && delIt.initiatorId === parseInt(activeUserInitiatorId))
+            // console.log(deletableXFactor)
             //userId of the friend === the ID of the clicked friend for DELETE
             
             // const deletableFriendId = deletableFriendObject.find(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
-            const deletableFriendId = deletableFriendObject.find(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
+            const deletableFriendId = deletableFriendObject.find(delIt => delIt.userId === parsedUserId && delIt.initiatorId === parseInt(activeUserInitiatorId))
             console.log(deletableFriendId)
             // const deleteId = deletableFriendId.userId
             const deleteId2 = deletableFriendId.id
@@ -118,22 +124,36 @@ export const FriendList = () => {
          
             deleteFriend(deleteId2).then(
                 () => {
-                    const allFriendsPreDelete = useFriends()
-                    const activeUserFriendsBeforeDelete = allFriendsPreDelete.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
-                    console.log(activeUserFriendsBeforeDelete)
-                    const theUpdatedFriends = activeUserFriendsBeforeDelete
-                    render(theUpdatedFriends)
+                    // const allFriendsPreDelete = useFriends()
+                    // const activeUserFriendsBeforeDelete = allFriendsPreDelete.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
+                    // console.log(activeUserFriendsBeforeDelete)
+                    // const theUpdatedFriends = activeUserFriendsBeforeDelete
+                    // render(theUpdatedFriends)
+
+                    const afterDeleteFriends = useFriends()
+                    const reallyUpdatedFriendAfterDelete = afterDeleteFriends .filter(FriendRel =>  parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
+                    // const message = new CustomEvent("newFriendJoinCreated")
+                    // console.log(`newFriend Component Here!!!`)
+                    // eventHub.dispatchEvent(message)
+                    //  FriendFormComponent()
+                    render(reallyUpdatedFriendAfterDelete)
+
+
+
                     
                 }
             )
         }
     }) 
 
+
+
     const nowFriends = useFriends()
-    const activeUserFriendsUpdated = nowFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
+    const activeUserFriendsUpdated = nowFriends.filter(FriendRel =>  parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
     const renderFriendsAgain = () => {
-        const allFriends = activeUserFriendsUpdated 
-        render(allFriends)
+        const allFriends = activeUserFriendsUpdated
+        console.log(activeUserFriendsUpdated)
+        render(activeUserFriendsUpdated)
     
     }
     
@@ -142,6 +162,28 @@ export const FriendList = () => {
     
     })
 
+//     const renderActiveFriends = () => {
+// if( 
+    // eventHub.addEventListener("newFriendJoinCreated", event )  {
+    // renderFriendsAgain()
+
+    // } 
+    
+//     else {   
+// console.log("show friends code in progress")
+
+//     }
+
+// }
+    
+// eventHub.addEventListener("newFriendJoinCreated", event => {
+//   renderFriendsAgain()
+
+// })
+
+
+
+    // renderFriendsAgain()
 
     const render = (friends) => 
     {
@@ -172,7 +214,8 @@ export const FriendList = () => {
    `
     }
 
-    // render(activeUserFriends)
+    render(activeUserFriendsAtLogin)
+  
 
 }
 
