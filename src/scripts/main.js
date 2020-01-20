@@ -10,20 +10,28 @@ import { getFriends, saveFriend, deleteFriend } from "./Friends/FriendProvider.j
 import { getUsers, saveUser, useUsers } from "./Users/UserProvider.js"
 
 
+const LogInLoad = () => {
+  return getUsers()
+  .then(LogInForm)
+  .then(RegisterNewAccountForm)
+  .then(RegisterNewAccount)
+  .then(userFormComponent)
+  
+}
+export const NutShellDashBoard = () => {
+  return getUsers()
+  .then(EventFormComponent)
+  .then(taskFormComponent)
+  .then(ArticleFormComponent)
+  .then(ChatFormComponent)
+  .then(FriendFormComponent)
+  
+}
+LogInLoad()
 
-getUsers()
-LogInForm()
-RegisterNewAccountForm()
-RegisterNewAccount()
-userFormComponent()
-EventFormComponent()
-taskFormComponent()
-ArticleFormComponent()
-ChatFormComponent()
-FriendFormComponent()
 
 
 
-getFriends()
-    .then(getUsers)
-    .then(FriendList)
+// getFriends()
+//     .then(getUsers)
+//     .then(FriendList)

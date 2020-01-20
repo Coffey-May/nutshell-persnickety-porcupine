@@ -1,4 +1,5 @@
 //Author: Rebecca Patek
+// edited to session storage/Adrian
 let users = []
 
 export const useUsers = () => users.slice();
