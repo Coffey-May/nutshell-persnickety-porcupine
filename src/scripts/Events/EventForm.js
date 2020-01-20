@@ -42,7 +42,7 @@ const render = () => {
   <h2>EVENTS</h2>
   <div class="eventForm">
       <form action="">
-          <button class="addBtnEvent">Add Event</button><br>
+          <button class="addBtnEvent" id="addBtnEvent">Add Event</button><br>
           <label for="">Name</label>
           <input class="eventName"type="text"><br>
           <label for="">Date</label>
