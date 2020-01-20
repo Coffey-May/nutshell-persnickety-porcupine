@@ -6,6 +6,19 @@ main{
 } */
 .articleList{
     width:40vw;
+    color:white;
+    font-family: 'Julius Sans One', sans-serif;
+    width:40vw;
+    height:30vh;
+    overflow: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image:linear-gradient(
+        rgba(36, 35, 35, 0.85),
+        rgba(26, 26, 26, 0.85)
+        ),
+         url('https://i.pinimg.com/originals/11/b6/76/11b6769c8f2ea91b25fa0bb10bcaf4ab.jpg');
+    
 }
 .newAndArticlesResult{
    margin:0 auto;
