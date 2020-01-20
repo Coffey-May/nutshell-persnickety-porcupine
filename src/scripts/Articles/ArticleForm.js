@@ -25,15 +25,15 @@ export const ArticleFormComponent = () => {
                 "userId": sessionStorage.getItem("activeUser")
             }
 
-
+            const message = new CustomEvent("articleStateChanged")
+            eventHub.dispatchEvent(message)
             // Change the app state
-           console.log(newArticleObject)
-
+        
+           saveArticle(newArticleObject).then(() => eventHub.dispatchEvent(message))
             // Dispatch a custom event that state was changed
-            const message = new CustomEvent("eventStateChanged")
-            eventHub.dispatchEvent(message).then(() => eventHub.dispatchEvent(message))
+           
 
-            saveArticle(newArticleObject)
+           
         }
     })
 
