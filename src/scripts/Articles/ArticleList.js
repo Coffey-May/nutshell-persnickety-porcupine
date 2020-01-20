@@ -1,45 +1,57 @@
-import { useArticles } from "./ArticleProvider.js"
+//Coffey initial setup of the event list    
+// import { useTasks } from "./TaskProvider.js"
+import { useUsers, getUsers, saveUser } from "../Users/UserProvider.js"
+import { ArticleComponent } from "./Article.js"
 import { ArticleFormComponent } from "./ArticleForm.js"
-
+import { useArticles } from "./ArticleProvider.js"
+// import { BuildingCount } from "./BuildingCount.js"
+// import { BuildingCard } from "./BuildingCard.js"
 
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".newsForm")
+let contentTarget = document.querySelector(".articleList")
 
-const ArticleList = () => {
-  const news = useArticles()
-  eventHub.addEventListener("click", clickEvent => {
+eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "addBtnArticle") {
     return ArticleFormComponent()
   }
 })
-  eventHub.addEventListener("newsHasBeenEdited", e => {
-    render(useNews())
-  })
+
+export const ArticleList = () => {
+    const articles = useArticles()
+    const users = useUsers()
+    
   
-  eventHub.addEventListener("newArticleSaved", e => {
-    render(useNews())
-  })
-  
-  eventHub.addEventListener("click", e => {
-    if (e.target.id.startsWith("deleteNewsArticle--")) {
-      const [prefix, id] = e.target.id.split("--")
-      deleteNews(id).then(() => render(useNews()))
+    eventHub.addEventListener("articleStateChanged", event => {
+        const updatedArticles = useArticles()
+        const updatedUsers = useUsers()
+        render(updatedArticles, updatedUsers)
+    })
+
+    eventHub.addEventListener("userStateChanged", event => {
+        const updatedUsers = useUsers()
+        const updatedArticles = usearticles()
+        render(updatedarticles, updatedUsers)
+    })
+
+
+     //STILL NEEDS WORK
+    const render = (arrayOfArticles, arrayOfUsers) => {
+
+        contentTarget.innerHTML = `
+         
+
+            ${
+                arrayOfArticles.map(
+                    article => {
+                        return ArticleComponent(article, arrayOfUsers)
+                    }
+                ).join("")
+            }
+        `
     }
-  })
 
-  // const render = (articles) => {
-  //   contentTarget.innerHTML = `<h2>News</h2>`
-  //   contentTarget.innerHTML += 
-  //   articles.map(news => NewsArticle(news)).join("")
-  // }
-
-  // render(news)
-
+    render(articles, users)
 }
-
-export default ArticleList
-
-
 
     
 

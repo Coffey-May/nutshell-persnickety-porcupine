@@ -29,13 +29,6 @@ label{
 
 }
 
-.eventCard, .eventCardName,.eventCardLocation{
-   width:.05vw;
-   letter-spacing: .05rem;
-   font-size: xx-small;
-   
-  
-}
 #eventWrap{
     display: flex;
     flex-direction: column;

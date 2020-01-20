@@ -8,7 +8,7 @@ import {FriendList} from "./Friends/FriendList.js"
 // import FriendList from "./Friends/FriendList2.js"
 import { getFriends } from "./Friends/FriendProvider.js"
 import { getUsers } from "./Users/UserProvider.js"
-import ArticleList from "./Articles/ArticleList.js"
+import {ArticleList} from "./Articles/ArticleList.js"
 import { EventList } from "./Events/EventList.js";
 import { ChatComponent } from "./Chats/Chat.js";
 // import { useFriends } from "./Friends/FriendProvider.js"
