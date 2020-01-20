@@ -4,12 +4,20 @@ main{
 /* #hidden{
     display:none;
 } */
+.articleList{
+    width:40vw;
+}
+.newAndArticlesResult{
+   margin:0 auto;
+   display:flex;
+   flex-direction: row;
+}
 
 .newsAndArticles{
     border:1px solid black;
     display:flex;
     flex-direction: row;
-    height:60vh;
+    height:30vh;
 }
 .newsDiv{
     width:40vw;

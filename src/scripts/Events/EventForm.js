@@ -18,18 +18,21 @@ export const EventFormComponent = () => {
 
 
             const newEventObject = {
-                "id": Math.floor(Math.random() * 1000) + 4,
-                "event": newEvent,
-                // "eventDate" newEventDate,
-                // "location" newEventLocation
+               
+                "eventName": newEvent,
+                "dateTime": newEventDate,
+                "eventLocation": newEventLocation,
+                "userId": sessionStorage.getItem("activeUser")
+                
             }
-            
+            const message = new CustomEvent("eventStateChanged")
+            console.log(newEventObject)
             // Change the app state
-            saveEvent(newEventObject)
+            saveEvent(newEventObject).then(() => eventHub.dispatchEvent(message)
+            )
 
             // Dispatch a custom event that state was changed
-            const message = new CustomEvent("eventStateChanged")
-            eventHub.dispatchEvent(message)
+            
         }  
     })
 
@@ -42,7 +45,7 @@ const render = () => {
   <h2>EVENTS</h2>
   <div class="eventForm">
       <form action="">
-          <button class="addBtnEvent" id="addBtnEvent">Add Event</button><br>
+         
           <label for="">Name</label>
           <input class="eventName"type="text"><br>
           <label for="">Date</label>
@@ -51,8 +54,10 @@ const render = () => {
           <input class="eventLocation"type="text">
       </form>
       <button id="saveBtnEvent">Save Event</button>
+     
       </div><br>
-  <div class="eventList">Event</div>
+     
+  
   `
   }
   render()
