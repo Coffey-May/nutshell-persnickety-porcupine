@@ -13,13 +13,12 @@ export const taskFormComponent = () => {
             if (clickEvent.target.id === "saveTaskBtn") {
              
                 // Get what user entered
-                const newTask = document.querySelector(".taskInput").value
                 
                 const newTaskObject = {
-                    "taskName": document.querySelector(".taskInput").value
-                    "tastETA": document.querySelector(".tasksCardETA")
-                    "tastCompletion":
-                    "userId": sessionStorage.getItem("activeUser")
+                    "taskName": document.querySelector(".taskInput").value,
+                    "tastETA": document.querySelector(".tasksCardETA").value,
+                    "tastCompletion": document.getElementById("checked").checked, 
+                    "userId": sessionStorage.getItem("activeUser").value
                 }
                 
                 

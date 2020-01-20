@@ -1,4 +1,5 @@
 //Coffey setup the task list
+//Rebecca updated and filtered by activeUser
 import { useTasks,getTasks } from "./TaskProvider.js"
 import {taskFormComponent} from "./TaskForm.js"
 
@@ -26,9 +27,10 @@ export const TaskList = () => {
     })
     
     const setActiveUser = sessionStorage.getItem("activeUser")
-    const tasksOfActiveUser = tasks.filter (ts => ts.userId === parsInt(setActiverUser.id),10)
+    const tasksOfActiveUser = tasks.filter(ts => ts.userId === setActiveUser)
+    const tasksStillNeedCompleted = tasksOfActiveUser.filter(t => t.taskCompletion !== true) 
      //STILL NEEDS WORK
-    const render = (arrayOfTasks, arrayOfUsers) => {
+    const render = (arrayOfTasks) => {
         
         contentTarget.innerHTML = `
         
@@ -36,7 +38,7 @@ export const TaskList = () => {
             ${
                 arrayOfTasks.map(
                     task => {
-                         return TaskComponent(task, arrayOfUsers)
+                         return TaskComponent(task)
                         
                     }
                 ).join("")
@@ -44,7 +46,7 @@ export const TaskList = () => {
         `
     }
 
-    render(tasks, users)
+    render(tasksOfActiveUser)
 }
 
 

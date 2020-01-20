@@ -5,7 +5,7 @@ export const TaskComponent = tasks => {
     <section class="taskCard">
     <div class="taskCardName">Name: ${tasks.taskName}</div>
     <div class="tasksCardETA" type="date">Complete by: ${tasks.taskETA}</div>
-    <div class="tasksCardCompletion" input type="radio" value="completed"></div>
+    <div id ="checked" class="tasksCardCompletion" input type="checkbox" value="completed"></div>
     </section>
   `;
 };
