@@ -4,11 +4,20 @@ h2{
 .taskList{
     color:white;
     font-family: 'Julius Sans One', sans-serif;
+    border:1px solid black;
+    height:10vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image:linear-gradient(
+        rgba(19, 19, 19, 0.85),
+        rgba(11, 11, 11, 0.85)
+        ),
+         url('https://www.proofhub.com/wp-content/uploads/2019/01/to-do-list-apps.jpg');
 }
 
 .tasks{
     border:1px solid black;
-    height:20vh;
+    height:10vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-image:linear-gradient(
