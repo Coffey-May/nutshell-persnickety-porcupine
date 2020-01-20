@@ -31,7 +31,7 @@ export const getArticles = () => {
     ).then(response => response.json())
     .then(parsedArticles => {
             // console.table(parsedArticles);
-            Articles = parsedArticles.slice()
+            articles = parsedArticles.slice()
         })
 
     }
