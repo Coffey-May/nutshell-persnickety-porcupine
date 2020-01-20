@@ -34,20 +34,13 @@ export const FriendList = () => {
     ///     },
 
 
-    // const appFriends = useFriends()
-    // const joinedFriends = useFriends()
-    // const appStateFriends = useUsers()
-
-
-    const loginUpdatedFriends = useFriends()
+     const loginUpdatedFriends = useFriends()
     // render(loginUpdatedFriends)
     const allFriends = useFriends()
     // render(allFriends)
     console.log(allFriends)
 
-    // const matchingUsers = useUsers()
-    // console.log(matchingUsers)
-
+ 
     ///Audry said to make the userID as the friends ID and to set up another iD as the 
     ///initiatorId which helps with the fetch
     ///so we can get all the details out of the filters etc to eliminate steps.
@@ -55,6 +48,7 @@ export const FriendList = () => {
 
 
     /// Hard coded the ActiveUser id here.  Need to get from session object upon login
+
     /// Testing with Sue id 7 as the active user
     // const activeUserInitiatorId = null
     let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
@@ -67,7 +61,7 @@ export const FriendList = () => {
     // This filter pulls ONLY the friends that match the activeUser 
     const activeUserFriendsAtLogin = allFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
 
-    console.log(activeUserFriendsAtLogin)
+    // console.log(activeUserFriendsAtLogin)
 
     // render(activeUserFriendsAtLogin)
 
@@ -77,27 +71,13 @@ export const FriendList = () => {
         // eventHub.addEventListener("click", clickEvent => {
         if (clickEvent.target.id.startsWith("deleteFriend--")) {
 
-            // parseInt(FriendRel.initiatorId)
-            // console.log(allFriends)
+           
             const [deletePrefix, userId] = (clickEvent.target.id.split("--"))
-            // console.log(clickEvent.target.id)
-
             // console.log(clickEvent.target.id.split("--"))
 
             const parsedUserId = parseInt(userId)
             console.log(parsedUserId)
 
-            ///     const activeUserInitiatorId is hard coded at line 58 above 
-            ///  
-            /// Need to find the id of of the object in friends array where 
-            /// ( 6 is the userId && initiatorId is the activeUserId)
-            /// this prevents us from deleting a join relationship in friends array of 
-            /// another user who is friends with user with id 6
-            /// const activeUserFriends =  allFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
-
-            // console.log(activeUserFriends)
-
-            // const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === activeUserInitiatorId)
             const allFriendsBeforeDelete = useFriends()
             
             const deletableFriends = allFriendsBeforeDelete.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === parsedUserId)
@@ -138,23 +118,21 @@ export const FriendList = () => {
                     //  FriendFormComponent()
                     render(reallyUpdatedFriendAfterDelete)
 
-
-
-                    
+        
                 }
             )
         }
     }) 
 
-
-
-    const nowFriends = useFriends()
-    const activeUserFriendsUpdated = nowFriends.filter(FriendRel =>  parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
+    
+    
     const renderFriendsAgain = () => {
+        const nowFriends = useFriends()
+        const activeUserFriendsUpdated = nowFriends.filter(FriendRel =>  parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
         const allFriends = activeUserFriendsUpdated
         console.log(activeUserFriendsUpdated)
         render(activeUserFriendsUpdated)
-    
+        
     }
     
     eventHub.addEventListener("newFriendJoinCreated", event => {
@@ -162,24 +140,7 @@ export const FriendList = () => {
     
     })
 
-//     const renderActiveFriends = () => {
-// if( 
-    // eventHub.addEventListener("newFriendJoinCreated", event )  {
-    // renderFriendsAgain()
 
-    // } 
-    
-//     else {   
-// console.log("show friends code in progress")
-
-//     }
-
-// }
-    
-// eventHub.addEventListener("newFriendJoinCreated", event => {
-//   renderFriendsAgain()
-
-// })
 
 
 
