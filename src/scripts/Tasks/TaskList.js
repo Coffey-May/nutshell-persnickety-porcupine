@@ -46,7 +46,7 @@ export const TaskList = () => {
         `
     }
 
-    render(tasksOfActiveUser)
+    render(tasksStillNeedCompleted)
 }
 
 
