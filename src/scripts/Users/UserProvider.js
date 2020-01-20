@@ -16,7 +16,6 @@ export const getUsers = () => {
          users = parsedUsers.slice()
  })
 }
-
 export const saveUser = user => {
     return fetch('http://localhost:8088/users', {
         method: "POST",

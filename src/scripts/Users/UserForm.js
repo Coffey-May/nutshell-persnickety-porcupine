@@ -1,9 +1,9 @@
 import { useUsers, saveUser } from "./UserProvider.js";
 import { NutShellDashBoard } from "../main.js";
-
 // Adrian edited html
 //Coffey html template insert.
 //Rebecca made changes to input ids and added functionality/eventHub
+//Coffey worked on login functionality
 export const LogInForm = () => {
   contentTarget.innerHTML = `
     <div>
@@ -22,7 +22,8 @@ export const LogInForm = () => {
   `;
 };
 const eventHub = document.querySelector(".container");
-const contentTarget = document.querySelector(".userForm");
+const contentTarget = document.querySelector(".userForm")
+
 
 export const userFormComponent = () => {
   eventHub.addEventListener("click", clickEvent => {

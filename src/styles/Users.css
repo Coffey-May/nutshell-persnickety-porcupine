@@ -8,6 +8,7 @@ h1{
   display: flex;
   justify-content: center;
   letter-spacing: 1rem;
+  font-size: xx-large;
 }
 a{
   color:white;
@@ -19,10 +20,17 @@ input{
   color:white;
   font-family: 'Julius Sans One', sans-serif;
 }
+.welcomeHeader{
+  
+}
+.userFormDiv{
+  margin-top: 30vh;
 
-.hide{
-  display: flex;
-  /* background-color: rgb(89, 89, 89); */
+}
+.userFormDiv{
+  /* display: flex;*/
+  height:100vh;
+  margin:0 auto;
   justify-content: center;
   text-align: center;
   background-repeat: no-repeat;

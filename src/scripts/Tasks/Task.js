@@ -1,4 +1,4 @@
-// Initial code by Adrian
+//Initial code by Adrian
 
 export const TaskComponent = tasks => {
   return `
@@ -9,3 +9,5 @@ export const TaskComponent = tasks => {
     </section>
   `;
 };
+
+

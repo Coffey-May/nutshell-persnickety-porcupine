@@ -44,4 +44,4 @@ if (sessionStorage.hasOwnProperty("activeUser")) {
 
 // getFriends()
 //     .then(getUsers)
-    // .then(FriendList)
+//     .then(FriendList)

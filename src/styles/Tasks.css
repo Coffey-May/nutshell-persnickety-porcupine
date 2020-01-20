@@ -1,12 +1,14 @@
 h2{
     font-family: 'Julius Sans One', sans-serif;
 }
+.taskList{
+    color:white;
+    font-family: 'Julius Sans One', sans-serif;
+}
 
 .tasks{
     border:1px solid black;
     height:20vh;
-    /* background-color: rgb(167, 167, 167); */
-    border:1px solid black;
     background-repeat: no-repeat;
     background-size: cover;
     background-image:linear-gradient(
@@ -16,7 +18,7 @@ h2{
          url('https://www.proofhub.com/wp-content/uploads/2019/01/to-do-list-apps.jpg');
 }
 
-.saveTaskBtn{
+#saveTaskBtn{
     background-color: rgba(224, 254, 216, 0.817);
     color:rgb(0, 0, 0);
     border-radius: 10%;
@@ -31,7 +33,7 @@ h2{
     color:white;
     border-radius: 10%;
 }
-.saveTaskBtn:hover {
+#saveTaskBtn:hover {
     background-color: #73eb77
 }
 .editTaskBtn:hover {
@@ -41,7 +43,7 @@ h2{
     background-color: #b30404
 }
 
-.saveTaskBtn:active {
+#saveTaskBtn:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
