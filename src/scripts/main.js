@@ -6,10 +6,14 @@ import {ChatFormComponent} from "./Chats/ChatForm.js"
 import {FriendFormComponent,} from "./Friends/FriendForm.js";
 import {FriendList} from "./Friends/FriendList.js"
 // import FriendList from "./Friends/FriendList2.js"
-import { getFriends, saveFriend, deleteFriend } from "./Friends/FriendProvider.js"
-import { getUsers, saveUser, useUsers } from "./Users/UserProvider.js"
+import { getFriends } from "./Friends/FriendProvider.js"
+import { getUsers } from "./Users/UserProvider.js"
+import ArticleList from "./Articles/ArticleList.js"
+// import { useFriends } from "./Friends/FriendProvider.js"
+// import { useFriends } from "./FriendProvider.js"
+// import { useUsers } from "../Users/UserProvider.js"
 
-
+ArticleList()
 const LogInLoad = () => {
   return getUsers()
   .then(LogInForm)
@@ -22,14 +26,18 @@ export const NutShellDashBoard = () => {
   return getUsers()
   .then(EventFormComponent)
   .then(taskFormComponent)
-  .then(ArticleFormComponent)
+  .then(ArticleList)
   .then(ChatFormComponent)
   .then(FriendFormComponent)
   // .then(AddFriendComponent)
   .then(getFriends)
   .then(FriendList)
 }
-LogInLoad()
+if (sessionStorage.hasOwnProperty("activeUser")) {
+  NutShellDashBoard()
+  }else { 
+  LogInLoad()
+  }
 
 
 
