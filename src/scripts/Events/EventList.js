@@ -1,4 +1,4 @@
-//Coffey initial setup of the event list
+//Coffey initial setup of the event list    
 // import { useTasks } from "./TaskProvider.js"
 import { useUsers, getUsers, saveUser } from "../Users/UserProvider.js"
 import { EventComponent } from "./Event.js"
