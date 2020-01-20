@@ -25,13 +25,14 @@ export const TaskList = () => {
         render(updatedTasks, updatedUsers)
     })
     
-  
+    const setActiveUser = sessionStorage.getItem("activeUser")
+    const tasksOfActiveUser = tasks.filter (ts => ts.userId === parsInt(setActiverUser.id),10)
      //STILL NEEDS WORK
     const render = (arrayOfTasks, arrayOfUsers) => {
         
         contentTarget.innerHTML = `
         
-bdkasbkjdbakj
+
             ${
                 arrayOfTasks.map(
                     task => {

@@ -16,8 +16,10 @@ export const taskFormComponent = () => {
                 const newTask = document.querySelector(".taskInput").value
                 
                 const newTaskObject = {
-                    "id": Math.floor(Math.random() * 1000) + 4,
-                    "task": newTask
+                    "taskName": document.querySelector(".taskInput").value
+                    "tastETA": document.querySelector(".tasksCardETA")
+                    "tastCompletion":
+                    "userId": sessionStorage.getItem("activeUser")
                 }
                 
                 
