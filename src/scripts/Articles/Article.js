@@ -3,10 +3,10 @@
 export const ArticleComponent = articles => {
   return `
     <section class="articleCard">
-    <div class="articleCardTitle">Title: ${articles.articleTitle}</div>
-    <div class="articlesCardSynopsis">Synopsis: ${articles.articleSynopsis}</div>
-    <div class="articlesCardURL">Link: ${articles.articleURL}</div>
-    <div class="articlesCardTimeStamp">Date: ${articles.postDate}</div>
+    <p class="articleCardTitle">Title: ${articles.articleTitle}</p>
+    <p class="articlesCardSynopsis">Synopsis: ${articles.articleSynopsis}</p>
+    <p class="articlesCardURL">Link: ${articles.articleURL}</p>
+    <p class="articlesCardTimeStamp">Date: ${articles.postDate}</p>
     </section>
   `;
 };

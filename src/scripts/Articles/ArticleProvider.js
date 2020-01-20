@@ -3,7 +3,7 @@
 let articles = []
 
 export const useArticles = () => {
-    return articles;
+    return articles.slice();
 };
 export const editArticles = (articlesObject) => {
   return fetch(`http://localhost:8088/articles/${articlesObject.id}`, {
@@ -31,13 +31,13 @@ export const getArticles = () => {
     ).then(response => response.json())
     .then(parsedArticles => {
             // console.table(parsedArticles);
-            Articles = parsedArticles.slice()
+            articles = parsedArticles.slice()
         })
 
     }
 
 export const saveArticle = article => {
-    fetch('http://localhost:8088/articles', {
+   return fetch('http://localhost:8088/articles', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

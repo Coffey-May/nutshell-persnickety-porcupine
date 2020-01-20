@@ -3,7 +3,7 @@
 let chats = []
 
 export const useChats = () => {
-    return chats;
+    return chats.slice();
 };
 export const editChats = (chatsObject) => {
   return fetch(`http://localhost:8088/chats/${chatsObject.id}`, {

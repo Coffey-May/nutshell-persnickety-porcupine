@@ -1,18 +1,26 @@
-//Coffey initial setup of the event list
+//Coffey initial setup of the event list    
 // import { useTasks } from "./TaskProvider.js"
 import { useUsers, getUsers, saveUser } from "../Users/UserProvider.js"
 import { EventComponent } from "./Event.js"
+import { EventFormComponent } from "./EventForm.js"
+import { useEvents } from "./EventProvider.js"
 // import { BuildingCount } from "./BuildingCount.js"
 // import { BuildingCard } from "./BuildingCard.js"
 
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".eventList")
+let contentTarget = document.querySelector(".eventList")
 
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "addBtnEvent") {
+    return EventFormComponent()
+  }
+})
 
 export const EventList = () => {
     const events = useEvents()
     const users = useUsers()
-
+    
+  
     eventHub.addEventListener("eventStateChanged", event => {
         const updatedEvents = useEvents()
         const updatedUsers = useUsers()

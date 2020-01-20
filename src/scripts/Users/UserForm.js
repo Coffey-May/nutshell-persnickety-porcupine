@@ -1,4 +1,4 @@
-import { useUsers, saveUser } from "./UserProvider.js";
+import { useUsers, saveUser, getUsers } from "./UserProvider.js";
 import { NutShellDashBoard } from "../main.js";
 // Adrian edited html
 //Coffey html template insert.
@@ -41,7 +41,8 @@ export const userFormComponent = () => {
             sessionStorage.setItem("activeUser", foundUser.id);
             const contentTarget = document.querySelector(".userForm");
             contentTarget.innerHTML = "";
-            return NutShellDashBoard()
+            const message = new CustomEvent("userLoggedIn")
+            eventHub.dispatchEvent(message)
         }
     }
   });
@@ -58,7 +59,8 @@ export const RegisterNewAccountForm = () => {
             <label class="userRegisterLabels" for="">E-MAIL</label>
             <input type="email" id="userName"><br>
             <label class="userLabels" for="">Password</label>
-            <input type="password" id="password1"><br>
+            <input type="hs -o
+            password" id="password1"><br>
             <label class="userLabels" for="">Password</label>
             <input type="password" id="password2"><br>
             </form>
@@ -73,16 +75,30 @@ export const RegisterNewAccount = () => {
         let userNameValue = document.querySelector("#userName").value;
         let emailValue = document.querySelector("#userName").value;
         let passwordValue = document.querySelector("#password1").value;
+        let passwordValue2 = document.querySelector("#password2").value;
         if (userNameValue === "" || emailValue === "" || passwordValue === "") {
           alert("Please fill out all Fields");
-        } else {
+        }else if (passwordValue !== passwordValue2) {
+            window.alert("Passwords Don't Match")
+        }
+        else {
           const newUser = {
             userName: userNameValue,
             userEmail: emailValue,
             userPassword: passwordValue
           };
-          saveUser(newUser)
-          .then(NutShellDashBoard)
+          saveUser(newUser).then(
+            () => {
+                if (sessionStorage.hasOwnProperty("activeUser")) {
+                const message = new CustomEvent("newUserRegistered")
+                eventHub.dispatchEvent(message)
+
+            }
+          
+          
+            
+          })
+        //   .then broadcast event
           
         }
       }
