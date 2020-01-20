@@ -1,6 +1,10 @@
 h2{
     font-family: 'Julius Sans One', sans-serif;
 }
+.friendCardName {
+
+    color: white;
+}
 
 .friendsList{
     border:1px solid black;

@@ -39,7 +39,6 @@ const render = () => {
 <h2 class="newsHeader">NEWS</h2>
 <div class="newsForm">
     <form action="">
-        <button class="addBtnArticle">Add Article</button><br>
         <label for="">Name</label>
         <input type="text"><br>
         <label for="">Date</label>
