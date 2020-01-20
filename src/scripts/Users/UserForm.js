@@ -1,4 +1,5 @@
 import { useUsers, saveUser } from "./UserProvider.js";
+import { NutShellDashBoard } from "../main.js";
 
 // Adrian edited html
 //Coffey html template insert.
@@ -29,17 +30,21 @@ export const userFormComponent = () => {
     // const password2 = document.querySelector("#password2").value;
     //    compare code
     if (clickEvent.target.id === "logInButton") {
+        // if (sessionStorage != null) {
+        //     return NutShellDashBoard()
+        // } 
       const users = useUsers();
       console.log(users);
       const userName = document.querySelector("#userName").value;
       const foundUser = users.find(user => user.userName === userName);
-      if (foundUser === undefined) {
-        alert("Please register a new Account");
-      } else {
-        sessionStorage.setItem("activeUser", foundUser.id);
-        const contentTarget = document.querySelector(".userForm");
-        contentTarget.innerHTML = "";
-      }
+    if (foundUser === undefined) {
+      alert("Please register a new Account");
+        } else {
+            sessionStorage.setItem("activeUser", foundUser.id);
+            const contentTarget = document.querySelector(".userForm");
+            contentTarget.innerHTML = "";
+            return NutShellDashBoard()
+        }
     }
   });
 };
@@ -79,6 +84,7 @@ export const RegisterNewAccount = () => {
             userPassword: passwordValue
           };
           saveUser(newUser)
+          .then(NutShellDashBoard)
           
         }
       }
