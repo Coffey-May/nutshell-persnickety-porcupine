@@ -19,10 +19,10 @@ const contentTarget = document.querySelector(".friendsList")
 
 const FriendList = () => {
 
-
+    
     /// get the join objects in the json file called Friends to do the filter
     /// from the FriendProvider.js
-    /// On 1-17-20 Audry said its better to make the userID in teh json join = the friends .id and to set up another Id as the 
+    /// On 1-17-20 Audry said its better to make the userID in the json join = the friends .id and to set up another Id as the 
     ///initiatorId of the AvtiveUser to help with the fetch calls and minimize the filters etc 
     // The initiator is the activeUser that is logged in to use the Nutshell site
     /// 
@@ -38,7 +38,11 @@ const FriendList = () => {
     // const joinedFriends = useFriends()
     // const appStateFriends = useUsers()
 
+
+    const loginUpdatedFriends = useFriends()
+    // render(loginUpdatedFriends)
     const allFriends = useFriends()
+    // render(allFriends)
     // console.log(allFriends)
 
     // const matchingUsers = useUsers()
@@ -60,29 +64,29 @@ const FriendList = () => {
 
     // This filter pulls ONLY the friends that match the activeUser 
     const activeUserFriends = allFriends.filter(FriendRel => activeUserInitiatorId === parseInt(FriendRel.initiatorId))
-    // console.log(activeUserFriends)
+    console.log(activeUserFriends)
 
 
 
-    eventHub.addEventListener("click", clickEvent => {
+    // eventHub.addEventListener("click", clickEvent => {
 
-        if (clickEvent.target.id === "saveBtnFriend") {
+    //     if (clickEvent.target.id === "saveBtnFriend") {
 
-            console.log(activeUserFriends)
+    //         console.log(activeUserFriends)
 
-            console.log(clickEvent.target.id)
+    //         console.log(clickEvent.target.id)
 
-            const addFriendEvent = new CustomEvent("saveFriendButtonClicked", {
-                // detail: {
+    //         const addFriendEvent = new CustomEvent("saveFriendButtonClicked", {
+    //             // detail: {
 
-                //     friend: friend.friendName
-                // }
-            })
-            // eventHub.dispatchEvent(addFriendEvent)
+    //             //     friend: friend.friendName
+    //             // }
+    //         })
+    //         // eventHub.dispatchEvent(addFriendEvent)
 
-        }
+    //     }
 
-    })
+    // })
 
     eventHub.addEventListener("click", clickEvent => {
 
@@ -109,32 +113,64 @@ const FriendList = () => {
 
             // console.log(activeUserFriends)
 
-            const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) !== activeUserInitiatorId)
-
+            // const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === activeUserInitiatorId)
+            const deletableFriends = allFriends.filter(haveUserIdMarkedForDel => parseInt(haveUserIdMarkedForDel.userId) === parsedUserId)
             console.log(deletableFriends)
 
             const deletableFriendObject = deletableFriends.filter(delId => delId.initiatorId === activeUserInitiatorId)
             console.log(deletableFriendObject)
+
+            const deletableXFactor = deletableFriends.filter(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
+            console.log(deletableXFactor)
+
+            const deletableXFactor1 = deletableFriends.filter(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
+            console.log(deletableXFactor)
             //userId of the friend === the ID of the clicked friend for DELETE
             
-
+            // const deletableFriendId = deletableFriendObject.find(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
             const deletableFriendId = deletableFriendObject.find(delIt => delIt.userId === parsedUserId && delIt.initiatorId === activeUserInitiatorId)
             console.log(deletableFriendId)
-            const deleteId = deletableFriendId.id
-            console.log(deleteId)
-          
+            // const deleteId = deletableFriendId.userId
+            const deleteId2 = deletableFriendId.id
+            console.log(deleteId2)
+
+
+            // function checkEqualTo(delId) {
+            //     return delId = parsedUserId;
+            //   }
+
+            // const getDeleteId = () => {
+
+            //     if(deletableXFactor.some(checkEqualTo) = true)  {
+            //     console.log(parsedUserId)
+
+            //     }   
+            
+            // }
+
 
             // console.log(friends.userId)
-            deleteFriend(deleteId)
-            // .then(
-            //     () => {
+            deleteFriend(deleteId2).then(
+                () => {
 
-            //         const theUpdatedFriends = activeUserFriends
-            //         render(theUpdatedFriends)
-            //     }
-            // )
+                    const theUpdatedFriends = useFriends()
+                    render(theUpdatedFriends)
+                    // render(deletableFriends)
+                }
+            )
         }
     }) 
+
+    const renderFriendsAgain = () => {
+        const allFriends = useFriends()
+        render(allFriends)
+    
+    }
+    
+    eventHub.addEventListener("saveFriendButtonClicked", event => {
+      renderFriendsAgain()
+    
+    })
 
 
     const render = (friends) => {
@@ -163,9 +199,9 @@ const FriendList = () => {
 
 
    `
-    };
+    }
 
-    render(activeUserFriends)
+    // render(activeUserFriends)
 
 }
 

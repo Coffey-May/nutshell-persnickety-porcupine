@@ -3,15 +3,7 @@ let friends = []
 
 
 
-export const deleteFriend = (userId) => {
-    // console.log(userId);
-        return fetch(`http://localhost:8088/friends/${userId}`, 
-       
-        {
-        method: "DELETE"
-    })
-    .then(getFriends)
-}
+
 
 
 export const useFriends = () => {
@@ -30,8 +22,20 @@ export const getFriends = () => {
 
     }
 
+
+
+    export const deleteFriend = (userId) => {
+        // console.log(userId);
+            return fetch(`http://localhost:8088/friends/${userId}`, 
+           
+            {
+            method: "DELETE"
+        })
+        .then(getFriends)
+    }
+
 export const saveFriend = friend => {
-    fetch('http://localhost:8088/friends', {
+    return fetch('http://localhost:8088/friends', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

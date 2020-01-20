@@ -9,9 +9,6 @@ import FriendList from "./Friends/FriendList.js"
 import { getFriends, saveFriend, deleteFriend } from "./Friends/FriendProvider.js"
 import { getUsers, saveUser, useUsers } from "./Users/UserProvider.js"
 
-// import { useFriends } from "./Friends/FriendProvider.js"
-// import { useFriends } from "./FriendProvider.js"
-// import { useUsers } from "../Users/UserProvider.js"
 
 
 getUsers()
@@ -24,14 +21,9 @@ taskFormComponent()
 ArticleFormComponent()
 ChatFormComponent()
 FriendFormComponent()
-// useUsers()
 
-// useFriends()
-// getFriends()
-// getUsers().then(FriendList())
 
 
 getFriends()
     .then(getUsers)
-    // .then(useUsers)
     .then(FriendList)
