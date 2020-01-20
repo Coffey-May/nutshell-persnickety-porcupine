@@ -11,24 +11,29 @@ export const ArticleFormComponent = () => {
             // Get what user entered
             console.log('hi clicked')
             
-            const newEvent = document.querySelector(".eventName").value
-            const newEventDate = document.querySelector(".eventDate").value
-            const newEventLocation = document.querySelector(".eventLocation").value
+            const newArticle = document.querySelector(".articleName").value
+            const newArticleDate = document.querySelector(".articleDate").value
+            const newArticleURL = document.querySelector(".articleURL").value
+            const newArticleSynopsis = document.querySelector(".articleSynopsis").value
 
-
-            const newEventObject = {
-                "id": Math.floor(Math.random() * 1000) + 4,
-                "event": newEvent,
-                // "eventDate" newEventDate,
-                // "location" newEventLocation
+            const newArticleObject = {
+                
+                "articleTitle": newArticle,
+                "articleSynopsis": newArticleSynopsis,
+                "articleURL": newArticleURL,
+                "postDate": newArticleDate,
+                "userId": sessionStorage.getItem("activeUser")
             }
 
+
             // Change the app state
-            saveArticle(newEventObject)
+           console.log(newArticleObject)
 
             // Dispatch a custom event that state was changed
             const message = new CustomEvent("eventStateChanged")
-            eventHub.dispatchEvent(message)
+            eventHub.dispatchEvent(message).then(() => eventHub.dispatchEvent(message))
+
+            saveArticle(newArticleObject)
         }
     })
 
@@ -36,17 +41,17 @@ export const ArticleFormComponent = () => {
 
 const render = () => {
     contentTarget.innerHTML =`
-<h2 class="newsHeader">NEWS</h2>
+
 <div class="newsForm">
     <form action="">
-        <label for="">Name</label>
-        <input type="text"><br>
+        <label for="">Title</label>
+        <input class="articleName type="text"><br>
         <label for="">Synopsis</label>
-        <input type="text"><br>
-        <label for="">URL</label>
-        <input type="text">
+        <input class="articleSynopsis type="text"><br>
         <label for="">Date</label>
-        <input type="date"><br>
+        <input class="articleDate" type="date"><br>
+        <label for="">URL</label>
+        <input class="articleURL"type="text">
     </form>
     <button id="saveBtnArticle">Save Article</button>
 </div>
@@ -54,3 +59,4 @@ const render = () => {
 }
 render()
 }
+

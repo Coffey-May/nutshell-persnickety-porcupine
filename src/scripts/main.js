@@ -27,8 +27,10 @@ const LogInLoad = () => {
 
 export const NutShellDashBoard = () => {
   return getUsers()
+  
   .then(taskFormComponent)
   .then(ArticleList)
+  .then(EventList)
   .then(ChatFormComponent)
   .then(ChatComponent)
   // .then(AddFriendComponent)

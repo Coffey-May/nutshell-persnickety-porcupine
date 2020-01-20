@@ -7,7 +7,7 @@ let friends = []
 
 
 export const useFriends = () => {
-    return friends;
+    return friends.slice();
 };
 
 export const getFriends = () => {
