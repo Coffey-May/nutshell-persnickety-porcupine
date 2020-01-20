@@ -22,7 +22,7 @@ export const LogInForm = () => {
   `;
 };
 const eventHub = document.querySelector(".container");
-const contentTarget = document.querySelector(".hide")
+const contentTarget = document.querySelector(".userForm")
 
 
 export const userFormComponent = () => {
