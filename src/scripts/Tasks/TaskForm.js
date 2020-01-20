@@ -1,15 +1,34 @@
+//Coffey setup the task form
+import {saveTask }from "./TaskProvider.js"
+
 const contentTarget = document.querySelector('.tasks')
 const eventHub = document.querySelector('.container')
 
 
 export const taskFormComponent = () => {
 
+  
 
-
-
-
-
-
+        eventHub.addEventListener("click", clickEvent => {
+            if (clickEvent.target.id === "saveTaskBtn") {
+             
+                // Get what user entered
+                const newTask = document.querySelector(".taskInput").value
+                
+                const newTaskObject = {
+                    "id": Math.floor(Math.random() * 1000) + 4,
+                    "task": newTask
+                }
+                
+                
+                // Change the app state
+                saveTask(newTaskObject)
+    
+                // Dispatch a custom event that state was changed
+                const message = new CustomEvent("newTaskCreated")
+                eventHub.dispatchEvent(message)
+            }
+        })
 
 const render = () => {
     contentTarget.innerHTML =`
@@ -17,11 +36,12 @@ const render = () => {
     <div>
         <form action="">
             <label for="">Tasks</label>
-            <input type="text">
+            <input class="taskInput" type="text">
              </form>
-            <button class="saveTaskBtn">Save</button>
+            <button id="saveTaskBtn">Save</button>
             <button class="editTaskBtn">Edit</button>
             <button class="deleteTaskBtn">Delete</button>
+            <div class="taskList">New Task:</div>
     </div>`
 }
 render()

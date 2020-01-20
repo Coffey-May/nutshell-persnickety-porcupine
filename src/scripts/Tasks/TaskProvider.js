@@ -5,6 +5,7 @@ let tasks = []
 export const useTasks = () => {
     return tasks;
 };
+
 export const editTasks = (tasksObject) => {
   return fetch(`http://localhost:8088/tasks/${tasksObject.id}`, {
       method: "PUT",

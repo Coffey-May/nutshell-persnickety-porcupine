@@ -10,7 +10,6 @@ export const getUsers = () => {
     .then(res => res.json())
     .then(parsedUsers => users = parsedUsers)
 }
-
 export const saveUser = user => {
     return fetch('http://localhost:8088/users', {
         method: "POST",
