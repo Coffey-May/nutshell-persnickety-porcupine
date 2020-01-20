@@ -3,7 +3,7 @@
 let articles = []
 
 export const useArticles = () => {
-    return articles;
+    return articles.slice();
 };
 export const editArticles = (articlesObject) => {
   return fetch(`http://localhost:8088/articles/${articlesObject.id}`, {

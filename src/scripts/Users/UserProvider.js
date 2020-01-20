@@ -25,8 +25,8 @@ export const saveUser = user => {
         body: JSON.stringify(user)
     })
     .then(res => res.json())
-    // .then((newUser)=>{
-    //     sessionStorage.setItem("activeUser", newUser.id);
-    // })
+     .then((newUser)=>{
+        sessionStorage.setItem("activeUser", newUser.id);
+     })
     .then(getUsers)
 }
