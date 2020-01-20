@@ -37,7 +37,7 @@ export const getArticles = () => {
     }
 
 export const saveArticle = article => {
-    fetch('http://localhost:8088/articles', {
+ return fetch('http://localhost:8088/articles', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

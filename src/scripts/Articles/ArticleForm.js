@@ -31,9 +31,9 @@ export const ArticleFormComponent = () => {
 
             // Dispatch a custom event that state was changed
             const message = new CustomEvent("eventStateChanged")
-            eventHub.dispatchEvent(message).then(() => eventHub.dispatchEvent(message))
+            eventHub.dispatchEvent(message)
 
-            saveArticle(newArticleObject)
+            saveArticle(newArticleObject).then(() => eventHub.dispatchEvent(message))
         }
     })
 
