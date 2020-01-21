@@ -42,17 +42,28 @@ export const NutShellDashBoard = () => {
 }
 
 if (sessionStorage.hasOwnProperty("activeUser")) {
+
   NutShellDashBoard()
+  document.querySelector(".hidden").classList.remove("hidden")
 }else { 
   LogInLoad()
 }
 eventHub.addEventListener("userLoggedIn", event => {
-  return NutShellDashBoard()
+   NutShellDashBoard()
+   document.querySelector(".hidden").classList.remove("hidden")
+
 })
 eventHub.addEventListener("newUserRegistered", event => {
-  return NutShellDashBoard()
+  NutShellDashBoard()
+  document.querySelector(".hidden").classList.remove("hidden")
 })
 
+eventHub.addEventListener("click", clickEvent => {
+  if (clickEvent.target.id === "NoReallyGtfoButton") {
+  sessionStorage.removeItem("activeUser")
+  return LogInLoad()
+}
+})
 
 
 
