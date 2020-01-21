@@ -3,7 +3,7 @@
 import { useUsers, getUsers, saveUser } from "../Users/UserProvider.js"
 import { EventComponent } from "./Event.js"
 import { EventFormComponent } from "./EventForm.js"
-import { useEvents } from "./EventProvider.js"
+import { useEvents, deleteEvent } from "./EventProvider.js"
 // import { BuildingCount } from "./BuildingCount.js"
 // import { BuildingCard } from "./BuildingCard.js"
 
@@ -32,6 +32,20 @@ export const EventList = () => {
         const updatedEvents = useEvents()
         render(updatedEvents, updatedUsers)
     })
+
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("deleteEventBtn--")) {
+            
+            const [prefix, id] = clickEvent.target.id.split("--")
+            console.log(id)
+            deleteEvent(id).then(
+        () => {
+            const updatedEvents = useEvents()
+            render(updatedEvents)
+        })
+           
+    }
+})
 
 
      //STILL NEEDS WORK

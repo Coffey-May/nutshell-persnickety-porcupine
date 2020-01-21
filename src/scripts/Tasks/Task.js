@@ -9,7 +9,7 @@ export const TaskComponent = tasks => {
         <p class="tasksCardURL">Link: ${tasks.userId}</p>
     </div>
         <button class="editTaskBtn">Edit</button>
-        <button class="deleteTaskBtn">Delete</button>
+        <button id="deleteTaskBtn--${tasks.id}">Delete</button>
         <label for="">Tasks-Completion</label>
         <input class="taskInput" type="checkbox">
   `;

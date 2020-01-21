@@ -1,41 +1,40 @@
 // initial code by Adrian
 
-let chats = []
+let chat = []
+const setChat = (chatArray) => {
+    chat = chatArray.slice()
+}
 
-export const useChats = () => {
-    return chats.slice();
-};
-export const editChats = (chatsObject) => {
-  return fetch(`http://localhost:8088/chats/${chatsObject.id}`, {
+export const useChat = () => chat.slice()
+
+export const editChat = (chatsObject) => {
+  return fetch(`http://localhost:8088/chat/${chatsObject.id}`, {
       method: "PUT",
       headers: {
           "Content-Type": "application/json"
       },
       body: JSON.stringify(chatsObject)
   })
-      .then(getChats)
+      .then(getChat)
 
 }
 
-export const getChats = () => {
-    return fetch('http://localhost:8088/chats', {
-        method: "GET",
-}
-    ).then(response => response.json())
-    .then(parsedChats => {
-            // console.table(parsedChats);
-            chats = parsedChats.slice()
+export const getChat = () => {
+    return fetch("http://localhost:8088/chat?_expand=user")
+        .then(response => response.json())
+        .then((chatArray) => {
+            chat = chatArray.slice()
         })
 
     }
 
 export const saveChat = chat => {
-    fetch('http://localhost:8088/chats', {
+ return fetch('http://localhost:8088/chat', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(chat)
     })
-    .then(getChats)
+    .then(getChat)
 }
