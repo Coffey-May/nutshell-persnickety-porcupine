@@ -8,7 +8,7 @@ export const useUsers = () => users.slice();
 
 
 export const getUsers = () => {
-    return fetch('http://localhost:8088/users?_expand=userId', {
+    return fetch('http://localhost:8088/users?_expand=Id', {
         method: "GET",
 }   
     ).then(res => res.json())
