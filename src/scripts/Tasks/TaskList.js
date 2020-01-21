@@ -1,6 +1,5 @@
 //Coffey setup the task list
-//Rebecca updated and filtered by activeUser
-import { useTasks,getTasks } from "./TaskProvider.js"
+import { useTasks,deleteTasks } from "./TaskProvider.js"
 import {taskFormComponent} from "./TaskForm.js"
 
 import {useUsers} from "../Users/UserProvider.js"
@@ -26,12 +25,24 @@ export const TaskList = () => {
         render(updatedTasks, updatedUsers)
        
     })
-    
-    const setActiveUser = sessionStorage.getItem("activeUser")
-    const tasksOfActiveUser = tasks.filter(ts => ts.userId === setActiveUser)
-    const tasksStillNeedCompleted = tasksOfActiveUser.filter(t => t.taskCompletion !== true) 
-     //STILL NEEDS WORK
-    const render = (arrayOfTasks) => {
+
+// ///////////////////////
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("deleteTaskBtn--")) {
+            
+            const [prefix, id] = clickEvent.target.id.split("--")
+            console.log(id)
+    deleteTasks(id).then(
+        () => {
+            const updatedTasks = useTasks()
+            render(updatedTasks)
+        })
+           
+    }
+})
+    ///////////////////////
+  
+    const render = (arrayOfTasks, arrayOfUsers) => {
         
         contentTarget.innerHTML = `
         
