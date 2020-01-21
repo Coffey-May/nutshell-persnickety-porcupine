@@ -6,7 +6,8 @@ import { NutShellDashBoard } from "../main.js";
 //Coffey worked on login functionality
 export const LogInForm = () => {
   contentTarget.innerHTML = `
-    <div>
+    <div class="welcomeForm">
+    <div class="welcomeFormContent">
     <h1>WELCOME TO NUTSHELL</h1>
       <form action="">
           <label class="userLabels" for="">E-MAIL</label>
@@ -17,7 +18,7 @@ export const LogInForm = () => {
           <button type="button" id="logInButton">Log In</button>
           <br>
           <button type="button" id="registerNewButton">Register A New Account</button>
-          
+          </div>
   </div>
   `;
 };
@@ -60,7 +61,6 @@ export const RegisterNewAccountForm = () => {
             <input type="email" id="userName"><br>
             <label class="userLabels" for="">Password</label>
             <input type="password" id="password1"><br>
-            password" id="password1"><br>
             <label class="userLabels" for="">Password</label>
             <input type="password" id="password2"><br>
             </form>
@@ -90,6 +90,7 @@ export const RegisterNewAccount = () => {
           saveUser(newUser).then(
             () => {
                 if (sessionStorage.hasOwnProperty("activeUser")) {
+                  contentTarget.innerHTML = "";
                 const message = new CustomEvent("newUserRegistered")
                 eventHub.dispatchEvent(message)
 
