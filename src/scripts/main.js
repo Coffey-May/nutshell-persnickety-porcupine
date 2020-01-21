@@ -3,7 +3,7 @@ import {taskFormComponent} from "./Tasks/TaskForm.js";
 import {EventFormComponent} from "./Events/EventForm.js";
 import {ArticleFormComponent} from "./Articles/ArticleForm.js";
 import {ChatFormComponent} from "./Chats/ChatForm.js"
-import {FriendFormComponent,} from "./Friends/FriendForm.js";
+// import {FriendFormComponent,} from "./Friends/FriendForm.js";
 import {FriendList} from "./Friends/FriendList.js"
 // import FriendList from "./Friends/FriendList2.js"
 import { getFriends } from "./Friends/FriendProvider.js"
@@ -34,6 +34,9 @@ export const NutShellDashBoard = () => {
   // .then(AddFriendComponent)
   .then(getFriends)
   .then(FriendList)
+  // .then(FriendFormComponent)
+  
+  
 }
 
 if (sessionStorage.hasOwnProperty("activeUser")) {
@@ -50,6 +53,4 @@ eventHub.addEventListener("newUserRegistered", event => {
 
 
 
-// getFriends()
-//     .then(getUsers)
-//     .then(FriendList)
+

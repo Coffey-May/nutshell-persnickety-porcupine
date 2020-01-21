@@ -31,7 +31,7 @@ export const TaskList = () => {
         
         contentTarget.innerHTML = `
         
-bdkasbkjdbakj
+
             ${
                 arrayOfTasks.map(
                     task => {
