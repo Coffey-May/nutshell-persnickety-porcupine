@@ -9,7 +9,7 @@
 import { useFriends, saveFriend, getFriends } from "./FriendProvider.js"
 import { useUsers, saveUser } from "../Users/UserProvider.js"
 const eventHub = document.querySelector('.container');
-const contentTarget = document.querySelector('.friends');
+const contentTarget = document.querySelector('.friendDiv');
 
 // This sets the User to the session activeUser
 let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
@@ -28,10 +28,59 @@ export const FriendFormComponent = () => {
       const foundUser = users.find(user => user.userName === userName);
 
       if (foundUser === undefined) {
-        alert("User not in system. Try new spelling");
+
+        // alert("User not in system. Try new spelling");
+
+        const contentTarget = document.querySelector(".friendSaveAlert");
+
+        const renderAlert = () => {
+
+          contentTarget.innerHTML = `
+      
+        <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Oops!</strong> User name not found. Try another spelling!
+        </div>
+
+          `
+          // <strong>Oops!</strong> User name not found. Try another spelling!
+          // <strong>Oops!</strong> Please register a new Account!
+          // <strong>Oops!</strong> Please fill out all Fields!
+          // <strong>Oops!</strong> Passwords Don't Match!
+       
+       
+       
+          var close = document.getElementsByClassName("closebtn");
+          var i;
+
+          // Loop through all close buttons
+          for (i = 0; i < close.length; i++) {
+            // When someone clicks on a close button
+            close[i].onclick = function () {
+
+              // Get the parent of <span class="closebtn"> (<div class="alert">)
+              var div = this.parentElement;
+
+              // Set the opacity of div to 0 (transparent)
+              div.style.opacity = "0";
+
+              // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+              setTimeout(function () { div.style.display = "none"; }, 900);
+            }
+          }
+
+
+        }
+
+        renderAlert()
+
+        /// Alert for Register New Account      alert("Please register a new Account");
+      /// Alert for Register New Account   alert("Please fill out all Fields");
+      /// Alert for Register New Account         window.alert("Passwords Don't Match")
+
 
       } else {
-        
+
         const contentTarget = document.querySelector(".friends");
         const friendToAddId = foundUser.id
 
@@ -51,7 +100,7 @@ export const FriendFormComponent = () => {
             const afterSaveFriends = useFriends()
             const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
             const message = new CustomEvent("newFriendJoinCreated")
-         
+
             eventHub.dispatchEvent(message)
             render(reallyUpdatedFriendAfterSave)
           }
@@ -87,7 +136,7 @@ export const FriendFormComponent = () => {
 }
 
 
-{/* <button class="addBtnFriend" type="button">Add Friend</button> */}
+{/* <button class="addBtnFriend" type="button">Add Friend</button> */ }
 
 
 

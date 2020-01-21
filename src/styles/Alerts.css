@@ -1,0 +1,33 @@
+ /* Author: Eli Tamez cohort 37 */
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.9s; /* 600ms to fade out */
+    border-radius: 5%;
+    font-weight: bold;
+    font-size: 17px;
+
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+
+
+  
+
+  
