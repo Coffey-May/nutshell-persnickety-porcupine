@@ -1,5 +1,7 @@
 //Coffey initial setup of the event list    
 // import { useTasks } from "./TaskProvider.js"
+//Rebecca added edit and delete functions
+
 import { useUsers, getUsers, saveUser } from "../Users/UserProvider.js"
 import { ArticleComponent } from "./Article.js"
 import { ArticleFormComponent } from "./ArticleForm.js"
