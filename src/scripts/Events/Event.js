@@ -1,7 +1,7 @@
 // Initial code by Adrian
 
 export const EventComponent = event => {
-  if (articles.userId === sessionStorage.getItem("activeUser"))
+  if (event.userId === sessionStorage.getItem("activeUser"))
   {
   return `
     <section class="eventCard">
@@ -9,7 +9,7 @@ export const EventComponent = event => {
       <p class="eventCardName">Name: ${event.eventName}</p>
       <p class="eventCardDate">Date: ${event.dateTime}</p>
       <p class="eventCardLocation">Location: ${event.eventLocation}</p>
-      <button id="editEvent--${event.id}>Edit Event</button>
+      <button id="editEvent--${event.id}">Edit Event</button>
      <button id="deleteEventBtn--${event.id}">Delete Event</button>  
      </section>
   `;
@@ -21,6 +21,7 @@ else {
     <p class="eventCardName">Name: ${event.eventName}</p>
     <p class="eventCardDate">Date: ${event.dateTime}</p>
     <p class="eventCardLocation">Location: ${event.eventLocation}</p>
+    </section>
     
 `};
 

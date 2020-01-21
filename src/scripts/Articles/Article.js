@@ -1,4 +1,5 @@
 // Initial code by Adrian
+//rebecca added if stated with active user
 
 export const ArticleComponent = (articles, users) => {
   if (articles.userId === sessionStorage.getItem("activeUser"))
