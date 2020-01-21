@@ -41,7 +41,7 @@ export const ArticleFormComponent = () => {
 
 const render = () => {
     contentTarget.innerHTML =`
-
+    <h2>ARTICLES</h2>
 <div class="newsForm">
     <form action="">
         <label for="">Title</label>

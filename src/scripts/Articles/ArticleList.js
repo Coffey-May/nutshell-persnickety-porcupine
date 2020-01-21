@@ -34,7 +34,7 @@ export const ArticleList = () => {
     })
 
 
-     //STILL NEEDS WORK
+
     const render = (arrayOfArticles, arrayOfUsers) => {
 
         contentTarget.innerHTML = `
@@ -49,7 +49,7 @@ export const ArticleList = () => {
             }
         `
     }
-
+   
     render(articles, users)
 }
 

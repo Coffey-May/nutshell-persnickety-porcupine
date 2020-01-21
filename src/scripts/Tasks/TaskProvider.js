@@ -31,7 +31,7 @@ export const getTasks = () => {
 }
     ).then(response => response.json())
     .then(parsedtasks => {
-            // console.table(parsedtasks);
+            //  console.table(parsedtasks);
             tasks = parsedtasks.slice()
         })
 

@@ -14,7 +14,7 @@ export const TaskList = () => {
     const tasks = useTasks()
     const users = useUsers()
 
-    eventHub.addEventListener("taskStateChanged", event => {
+    eventHub.addEventListener("newTaskCreated", event => {
         const updatedTasks = useTasks()
         const updatedUsers = useUsers()
         render(updatedTasks, updatedUsers)
@@ -24,6 +24,7 @@ export const TaskList = () => {
         const updatedUsers = useUsers()
         const updatedTasks = useTasks()
         render(updatedTasks, updatedUsers)
+       
     })
     
     const setActiveUser = sessionStorage.getItem("activeUser")
@@ -48,6 +49,7 @@ export const TaskList = () => {
 
     render(tasksStillNeedCompleted)
 }
+
 
 
 
