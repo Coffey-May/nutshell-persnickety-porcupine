@@ -44,19 +44,20 @@ const ChatListComponent = () => {
           (individualChat) => {
               return `
                   <section class="Chat">
-                      <div>${individualChat.userId}</div>
+                      <div>${individualChat.user.userName}</div>
                       <div>${individualChat.chatText}</div>
                       <div>
                           ${new Date(individualChat.date).toLocaleDateString("us-en")}
                           ${new Date(individualChat.date).toLocaleTimeString("us-en")}
                       </div>
-                      <button id="editChat--${individualChat.id}">Edit</button>
-                  </section>
+                      </section>`
+                      
+                      `<button id="editChat--${individualChat.id}">Edit</button>
               `
           }
       ).join("")
   }
-
+render(chats)
 }
 
 export default ChatListComponent

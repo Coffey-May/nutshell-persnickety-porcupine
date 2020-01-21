@@ -10,7 +10,7 @@ import {ArticleList} from "./Articles/ArticleList.js"
 import { EventList } from "./Events/EventList.js";
 import { TaskList } from "./Tasks/TaskList.js";
 import ChatListComponent from "./Chats/ChatList.js";
-
+import { getChat } from "./Chats/ChatProvider.js";
 
 const eventHub = document.querySelector(".container");
 
@@ -29,7 +29,7 @@ export const NutShellDashBoard = () => {
   .then(ArticleList)
   .then(EventList)
   .then(TaskList)
- 
+  .then(getChat)
   .then(ChatFormComponent)
   .then(ChatListComponent)
   // .then(AddFriendComponent)
