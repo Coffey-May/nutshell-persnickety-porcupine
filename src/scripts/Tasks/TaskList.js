@@ -50,7 +50,7 @@ export const TaskList = () => {
             ${
                 arrayOfTasks.map(
                     task => {
-                         return TaskComponent(task)
+                         return TaskComponent(task, arrayOfUsers)
                         
                     }
                 ).join("")
@@ -58,7 +58,7 @@ export const TaskList = () => {
         `
     }
 
-    render(tasksStillNeedCompleted)
+    render(tasks, users)
 }
 
 

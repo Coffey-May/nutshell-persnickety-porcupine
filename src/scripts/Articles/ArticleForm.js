@@ -5,9 +5,10 @@ const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.newsDiv');
 
 export const ArticleFormComponent = () => {
-    eventHub.addEventListener("click", clickEvent => {
+
+    eventHub.addEventListener("editButtonClicked", clickEvent => {
         console.log("edit button was clicked")
-        const articleToBeEdited = clickEvent.detail.id
+        const articleToBeEdited = clickEvent.detail.Id
         const allArticlesArray = useArticles()
         const theFoundArticle = allArticlesArray.find(
             (currentArticleObject) => {
@@ -28,10 +29,11 @@ export const ArticleFormComponent = () => {
     eventHub.addEventListener("click", clickEvent => {
         if (clickEvent.target.id === "saveBtnArticle") {
             console.log('save button clicked')
-            const hiddenInputValue = document.querySelector("#aricle-id").value
+            const hiddenInputValue = document.querySelector("#article-id").value
+    
             if (hiddenInputValue !== "") {
                 const editedArticle =   {
-                    "id": parseInt(document.querySelector("#aricle-id").value, 10),
+                    "id": parseInt(document.querySelector("#article-id").value, 10),
                     "articleTitle": document.querySelector(".articleName").value,
                     "articleSynopsis": document.querySelector(".articleSynopsis").value,
                     "articleURL": document.querySelector(".articleURL").value,
