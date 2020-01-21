@@ -37,9 +37,6 @@ export const getArticles = () => {
     }
 
 export const saveArticle = article => {
-<<<<<<< HEAD
- return fetch('http://localhost:8088/articles', {
-=======
    return fetch('http://localhost:8088/articles', {
         method: "POST",
         headers: {

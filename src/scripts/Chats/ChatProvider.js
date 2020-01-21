@@ -1,8 +1,11 @@
 // initial code by Adrian
 
-let chats = []
+let chat = []
+const setChat = (chatArray) => {
+    chat = chatArray.slice()
+}
 
-export const useChat = () => chats.slice()
+export const useChat = () => chat.slice()
 
 export const editChat = (chatsObject) => {
   return fetch(`http://localhost:8088/chat/${chatsObject.id}`, {
@@ -17,19 +20,16 @@ export const editChat = (chatsObject) => {
 }
 
 export const getChat = () => {
-    return fetch('http://localhost:8088/chat', {
-        method: "GET",
-}
-    ).then(response => response.json())
-    .then(parsedChats => {
-            // console.table(parsedChats);
-            chats = parsedChats.slice()
+    return fetch("http://localhost:8088/chat")
+        .then(response => response.json())
+        .then((chatArray) => {
+            chat = chatArray.slice()
         })
 
     }
 
 export const saveChat = chat => {
-    fetch('http://localhost:8088/chat', {
+ return fetch('http://localhost:8088/chat', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

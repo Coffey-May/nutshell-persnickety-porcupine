@@ -11,6 +11,7 @@ import { getUsers } from "./Users/UserProvider.js"
 import {ArticleList} from "./Articles/ArticleList.js"
 import { EventList } from "./Events/EventList.js";
 import { ChatComponent } from "./Chats/Chat.js";
+import ChatListComponent from "./Chats/ChatList.js";
 // import { useFriends } from "./Friends/FriendProvider.js"
 // import { useFriends } from "./FriendProvider.js"
 // import { useUsers } from "../Users/UserProvider.js"
@@ -32,7 +33,7 @@ export const NutShellDashBoard = () => {
   .then(ArticleList)
   .then(EventList)
   .then(ChatFormComponent)
-  .then(ChatComponent)
+  .then(ChatListComponent)
   // .then(AddFriendComponent)
   .then(getFriends)
   .then(FriendList)

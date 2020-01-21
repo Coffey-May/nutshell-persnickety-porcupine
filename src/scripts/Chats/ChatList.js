@@ -1,27 +1,30 @@
-import { useChats } from "./ChatProvider";
+import { useChat } from "./ChatProvider.js";
+import { useUsers } from "../Users/UserProvider.js";
 
 const eventHub = document.querySelector(".container");
-const contentTarget = document.querySelector(".chat")
+const contentTarget = document.querySelector(".chatList")
 
 
 const ChatListComponent = () => {
+        const chats = useChat()
+        const users = useUsers()
 
   eventHub.addEventListener("ChatHasBeenEdited", event => {
-      const updatedChat = useChats()
+      const updatedChat = useChat()
       render(updatedChat)
   })
 
   eventHub.addEventListener("click", clickEvent => {
       if (clickEvent.target.id.startsWith("editChat--")) {
-          const [deletePrefix, noteId] = clickEvent.target.id.split("--")
+          const [deletePrefix, chatId] = clickEvent.target.id.split("--")
 
-          const editEvent = new CustomEvent("editButtonClicked", {
+          const editChat = new CustomEvent("editButtonClicked", {
               detail: {
                   chatId: chatId
               }
           })
 
-          eventHub.dispatchEvent(editEvent)
+          eventHub.dispatchEvent(editChat)
       }
   })
 
@@ -41,13 +44,12 @@ const ChatListComponent = () => {
           (individualChat) => {
               return `
                   <section class="Chat">
-                      <div>${individualChat.userName}</div>
+                      <div>${individualChat.userId}</div>
                       <div>${individualChat.chatText}</div>
                       <div>
                           ${new Date(individualChat.date).toLocaleDateString("us-en")}
                           ${new Date(individualChat.date).toLocaleTimeString("us-en")}
                       </div>
-                      <button id="deleteChat--${individualChat.id}">Delete</button>
                       <button id="editChat--${individualChat.id}">Edit</button>
                   </section>
               `

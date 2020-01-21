@@ -7,7 +7,7 @@ const contentTarget = document.querySelector('.chat')
 export const ChatFormComponent = () => {
 
     eventHub.addEventListener("editButtonClicked", event => {
-        const noteToBeEdited = event.detail.chatId
+        const ChatToBeEdited = event.detail.chatId
 
         const allChatArray = useChat()
 
@@ -46,7 +46,13 @@ export const ChatFormComponent = () => {
                     userId: parseInt(sessionStorage.getItem("activeUser"), 10),
                     date: Date.now()
                 }
-                saveChat(newChat)
+                const message = new CustomEvent("chatCreated")
+                eventHub.dispatchEvent(message)
+                saveChat(newChat).then(() => eventHub.dispatchEvent(message))
+                  
+                  
+                    
+                  
             }
         }
     })
