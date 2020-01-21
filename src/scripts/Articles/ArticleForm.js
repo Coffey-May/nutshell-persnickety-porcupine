@@ -81,7 +81,7 @@ const render = () => {
     <h2>ARTICLES</h2>
 <div class="newsForm">
     <form action="">
-        <br><input type="hidden" id="article-id"></br>
+        <input type="hidden" id="article-id">
         <label for="">Title</label>
         <input class="articleName" type="text"><br>
         <label for="">Synopsis</label>
