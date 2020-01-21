@@ -38,7 +38,7 @@ export const getTasks = () => {
     }
 
 export const saveTask = task => {
-  return fetch('http://localhost:8088/tasks', {
+    return fetch('http://localhost:8088/tasks', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

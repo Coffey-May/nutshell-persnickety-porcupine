@@ -6,6 +6,21 @@ h2{
     color: white;
 }
 
+.friendCard {
+    border:1px solid black;
+    color: white;
+    /* background-color: rgba(224, 254, 216, 0.817); */
+    background-color: rgba(35, 36, 35, 0.817);
+    border-radius: 5%;
+}
+
+.friendCard :hover {
+    /* background-color: #73eb77 */
+    background-color: lightsteelblue;
+    color: blue;
+}
+
+
 .friendsList{
     border:1px solid black;
     width:20vw;
@@ -36,6 +51,63 @@ h2{
 }
 
 .addBtnFriend:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#saveBtnFriend:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+
+
+ .deleteFriendButton{
+
+    background-color: rgba(224, 254, 216, 0.817);
+    /* color:rgb(0, 0, 0); */
+    border-radius: 10%;
+    background-color: rgb(247, 6, 6);
+    color:white;
+    
+  }
+
+ .deleteFriendButton:hover {
+    /* background-color: #73eb77; */
+    /* background-color: lightsalmon */
+    /* background-color: red; */
+    background-color: #b30404;
+    color:white;
+}
+
+
+
+.deleteFriendButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+#addBtnFriend{
+    background-color: rgba(224, 254, 216, 0.817);
+    color:rgb(0, 0, 0);
+    border-radius: 10%;
+}
+#saveBtnFriend{
+    background-color: rgba(224, 254, 216, 0.817);
+    color:rgb(0, 0, 0);
+    border-radius: 10%;
+}
+#addBtnFriend:hover {
+    background-color: #73eb77
+}
+#saveBtnFriend:hover {
+    background-color: #73eb77
+}
+
+#addBtnFriend:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);

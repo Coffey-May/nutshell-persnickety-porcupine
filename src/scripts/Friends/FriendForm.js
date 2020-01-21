@@ -1,162 +1,108 @@
+// Form render HTML created by Adrian
+
+// Logic Author: Eli Tamez cohort 37
+// Purpose of Module : to allow the logged in user to add friends to his group of friends by typing their userName
+// which is an email account.  They system validates if the useName is a current site member and if not notifies
+// the user to try again
+
+
 import { useFriends, saveFriend, getFriends } from "./FriendProvider.js"
 import { useUsers, saveUser } from "../Users/UserProvider.js"
 const eventHub = document.querySelector('.container');
-const contentTarget = document.querySelector('.friends');
+const contentTarget = document.querySelector('.friendDiv');
 
-
-
-
-
-
-
-// export const AddFriendComponent = () => {
-//   eventHub.addEventListener("click", clickEvent => {
-//     // const password1 = document.querySelector("#password1").value;
-//     // const password2 = document.querySelector("#password2").value;
-//     //    compare code
-//     if (clickEvent.target.id === "saveBtnFriend") {
-//       // if (sessionStorage != null) {
-//       //     return NutShellDashBoard()
-//       // } 
-//       const users = useUsers();
-//       console.log(users);
-
-//       const userName = document.querySelector("#friend-added").value;
-//       const foundUser = users.find(user => user.userName === userName);
-      
-//       if (foundUser === undefined) {
-//         alert("User not in system. Try new spelling");
-      
-//       } else {
-//         // sessionStorage.setItem("activeUser", foundUser.id);
-//         const contentTarget = document.querySelector(".friends");
-//         // contentTarget.innerHTML = "";
-//         // return NutShellDashBoard()
-//         const friendToAddId = foundUser.id
-
-//         const createNewFriendJoin = {
-//           // Key/value pairs here
-
-//           // friend: document.querySelector("#friend-added").value
-//           /// joe@nss.com is user.id 5, eli@nss.com is user.id 3
-//           /// need to set friends.initiatorId === activeUserId aka users.id from the Users object
-//           /// need to set friends.userId === users.id  
-//           userId: friendToAddId,
-//           initiatorId: 7
-//         }
-//         // Change API state and application state
-//         // This is the first saveFriend eventListner
-//         saveFriend(createNewFriendJoin).then(
-//           () => {
-//             const message = new CustomEvent("newFriendJoinCreated")
-//             console.log(`newFriend Component Here!!!`)
-//             eventHub.dispatchEvent(message)
-//             //  FriendFormComponent()
-//           }
-//         )
-
-//       }
-//     }
-//   }
-
-//   );
-// };
-
-
+// This sets the User to the session activeUser
+let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
 
 
 export const FriendFormComponent = () => {
 
+
   eventHub.addEventListener("click", clickEvent => {
+
     if (clickEvent.target.id === "saveBtnFriend") {
-      console.log(clickEvent.target.id)
-      // Make a new object representation of a friend    
-      const allFriendsArray = useFriends()
-      // console.log(allFriendsArray)
-      const allUsersArray = useUsers()
-      // console.log(allUsersArray)
 
-
-
-      //This code creates the new friend object in the JSON file
-      // const friendToAddId = foundUser.id
-
-      const createNewFriendJoin = {
-        // Key/value pairs here
-
-        // friend: document.querySelector("#friend-added").value
-        /// hard coded to test 
-        /// need to set friends.initiatorId === activeUserId aka users.id from the Users object
-        /// need to set friends.userId === users.id  
-        // userId: friendToAddId,
-        // initiatorId: 7
-      }
-      // Change API state and application state
-      // This is the first saveFriend eventListner
-      // saveFriend(createNewFriendJoin).then(
-      //   () => {
-      //     const message = new CustomEvent("newFriendJoinCreated")
-      //     // console.log(`newFriend Component Here!!!`)
-      //     eventHub.dispatchEvent(message)
-
-      //   }
-      // )
-
-    }
-
-
-  })
-
-  // eventHub.addEventListener("click", clickEvent => {
-  //   if (clickEvent.target.id === "saveBtnFriend") {
-  //     const message = new CustomEvent("saveFriendButtonClicked")
-  //     eventHub.dispatchEvent(message)
-
-  //   }
-
-  // })
-  eventHub.addEventListener("click", clickEvent => {
-    // const password1 = document.querySelector("#password1").value;
-    // const password2 = document.querySelector("#password2").value;
-    //    compare code
-    if (clickEvent.target.id === "saveBtnFriend") {
-      // if (sessionStorage != null) {
-      //     return NutShellDashBoard()
-      // } 
       const users = useUsers();
-      console.log(users);
 
       const userName = document.querySelector("#friend-added").value;
       const foundUser = users.find(user => user.userName === userName);
-      
+
       if (foundUser === undefined) {
-        alert("User not in system. Try new spelling");
+
+        // alert("User not in system. Try new spelling");
+
+        const contentTarget = document.querySelector(".friendSaveAlert");
+
+        const renderAlert = () => {
+
+          contentTarget.innerHTML = `
       
+        <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Oops!</strong> User name not found. Try another spelling!
+        </div>
+
+          `
+          // <strong>Oops!</strong> User name not found. Try another spelling!
+          // <strong>Oops!</strong> Please register a new Account!
+          // <strong>Oops!</strong> Please fill out all Fields!
+          // <strong>Oops!</strong> Passwords Don't Match!
+       
+       
+       
+          var close = document.getElementsByClassName("closebtn");
+          var i;
+
+          // Loop through all close buttons
+          for (i = 0; i < close.length; i++) {
+            // When someone clicks on a close button
+            close[i].onclick = function () {
+
+              // Get the parent of <span class="closebtn"> (<div class="alert">)
+              var div = this.parentElement;
+
+              // Set the opacity of div to 0 (transparent)
+              div.style.opacity = "0";
+
+              // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+              setTimeout(function () { div.style.display = "none"; }, 900);
+            }
+          }
+
+
+        }
+
+        renderAlert()
+
+        /// Alert for Register New Account      alert("Please register a new Account");
+      /// Alert for Register New Account   alert("Please fill out all Fields");
+      /// Alert for Register New Account         window.alert("Passwords Don't Match")
+
+
       } else {
-        // sessionStorage.setItem("activeUser", foundUser.id);
+
         const contentTarget = document.querySelector(".friends");
-        // contentTarget.innerHTML = "";
-        // return NutShellDashBoard()
         const friendToAddId = foundUser.id
 
+        /// Populate the friends object  
         const createNewFriendJoin = {
-          // Key/value pairs here
 
-          // friend: document.querySelector("#friend-added").value
-          /// joe@nss.com is user.id 5, eli@nss.com is user.id 3
-          /// need to set friends.initiatorId === activeUserId aka users.id from the Users object
-          /// need to set friends.userId === users.id  
           userId: friendToAddId,
-          initiatorId: 3
+          initiatorId: parseInt(activeUserInitiatorId)
+
         }
-        // Change API state and application state
-        // This is the first saveFriend eventListner
+
+
         saveFriend(createNewFriendJoin).then(
           () => {
+            /// Important to get the latest friends to do the render here.  Without it there is a lag in application state
+            /// or the friends listed will be one transaction behind
+            const afterSaveFriends = useFriends()
+            const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
             const message = new CustomEvent("newFriendJoinCreated")
-            console.log(`newFriend Component Here!!!`)
+
             eventHub.dispatchEvent(message)
-            //  FriendFormComponent()
+            render(reallyUpdatedFriendAfterSave)
           }
         )
 
@@ -167,19 +113,19 @@ export const FriendFormComponent = () => {
   )
 
 
-  // const FriendFormComponent = () => {
-
   const render = () => {
     contentTarget.innerHTML = `
         
-        <div>
-        <h2>FRIENDS</h2>
+    
+        <div class="friendForm">
         <form action="">
-        <button class="addBtnFriend" type="button">Add Friend</button>
-        <input type="text" id="friend-added">
-        
+            <label for="">Friend</label>
+            <input class="userName type="text" id="friend-added"><br>
+                        
         </form>
-        <button id="saveBtnFriend" type="button">Save Friend</button>
+<br>
+
+        <button id="saveBtnFriend">Save Friend</button>
         </div>
 
   `
@@ -190,7 +136,16 @@ export const FriendFormComponent = () => {
 }
 
 
-// export default FriendFormComponent
+{/* <button class="addBtnFriend" type="button">Add Friend</button> */ }
 
 
 
+// <div>
+// <h2>FRIENDS</h2>
+// <form action="">
+
+// <input type="text" id="friend-added">
+
+// </form>
+// <button id="saveBtnFriend" type="button">Save Friend</button>
+// </div>

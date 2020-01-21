@@ -31,7 +31,7 @@ export const TaskList = () => {
     const render = (arrayOfTasks, arrayOfUsers) => {
         
         contentTarget.innerHTML = `
-        Tasks
+        
 
             ${
                 arrayOfTasks.map(
