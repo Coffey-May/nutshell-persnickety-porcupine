@@ -42,7 +42,7 @@ export const FriendList = () => {
  
     let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
 
-    console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
+    // console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
 
     // This filter pulls ONLY the friends that match the activeUser 
     const activeUserFriendsAtLogin = allFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
