@@ -1,5 +1,5 @@
 //Coffey setup the task list
-import { useTasks,deleteTasks } from "./TaskProvider.js"
+import { useTasks,deleteTasks, editTasks } from "./TaskProvider.js"
 import {taskFormComponent} from "./TaskForm.js"
 
 import {useUsers} from "../Users/UserProvider.js"
@@ -12,7 +12,11 @@ const contentTarget = document.querySelector(".taskList")
 export const TaskList = () => {
     const tasks = useTasks()
     const users = useUsers()
-
+    
+    eventHub.addEventListener("TaskHasBeenEdited", event => {
+        const updatedTasks = useTasks()
+        render(updatedTasks)
+    })
     eventHub.addEventListener("newTaskCreated", event => {
         const updatedTasks = useTasks()
         const updatedUsers = useUsers()
@@ -25,6 +29,21 @@ export const TaskList = () => {
         render(updatedTasks, updatedUsers)
        
     })
+  
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("editTaskBtn--")) {
+            const [deletePrefix, taskId] = clickEvent.target.id.split("--")
+  
+            const editTask = new CustomEvent("editTaskButtonClicked", {
+                detail: {
+                    taskId: taskId
+                }
+            })
+  
+            eventHub.dispatchEvent(editTask)
+        }
+    })
+  
 
 // ///////////////////////
     eventHub.addEventListener("click", clickEvent => {
@@ -39,6 +58,13 @@ export const TaskList = () => {
         })
            
     }
+})
+const checkbox = document.querySelector(".taskInput");
+
+checkbox.addEventListener( "change", function(evt) {
+    if(evt.target.id.startsWith("taskInput--")) {
+        const [prefix, id] = change.checked.target.id.split("--")
+}
 })
     ///////////////////////
   
