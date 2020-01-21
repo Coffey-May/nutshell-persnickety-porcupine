@@ -19,7 +19,7 @@ export const taskFormComponent = () => {
                     "taskName": document.querySelector(".taskInput").value,
                     "taskETA": document.querySelector(".taskETA").value, 
                     "taskCompletion": document.getElementById("checked").checked,              
-                    "userId": sessionStorage.getItem(activeUser),
+                    "userId": sessionStorage.getItem("activeUser"),
                 }
                 
                 // Change the app state
