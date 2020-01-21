@@ -45,8 +45,10 @@ const ChatListComponent = () => {
           (individualChat) => {
             if (parseInt(sessionStorage.getItem("activeUser")) === individualChat.userId) {
             return `
+            
                 <section class="Chat">
-                    <div>${individualChat.user.userName}</div>
+                <button class="chatUsername" id="#addBtnChatFriend">${individualChat.user.userName}:</button>    
+                    <div class="chatFriendCardName1">${individualChat.user.userName}</div>
                     <div>${individualChat.chatText}</div>
                     <div>
                         ${new Date(individualChat.date).toLocaleDateString("us-en")}
@@ -56,8 +58,11 @@ const ChatListComponent = () => {
                     </section>`
             } else {
             return `
+  
                 <section class="Chat">
-                    <div>${individualChat.user.userName}</div>
+                
+            <button class="chatUsername" id="#addBtnChatFriend">${individualChat.user.userName}:</button>  
+                    <div class="chatFriendCardName2">${individualChat.user.userName}</div>
                     <div>${individualChat.chatText}</div>
                     <div>
                         ${new Date(individualChat.date).toLocaleDateString("us-en")}

@@ -6,18 +6,18 @@ export const ChatFormComponent = () => {
       if (clickEvent.target.id === "addBtnChatFriend") {
   
         const chats = useChats();
-        const userName = document.querySelector("chatFriendCardName").value;
+        const userName = document.querySelector("chatFriendCardName2").value;
         
   
         
   
           const contentTarget = document.querySelector(".friends");
-          const friendToAddId = foundUser.id
+          const friendToAddId =userName
   
           /// Populate the friends object  
           const createNewFriendJoin = {
   
-            userId: userName,
+            userId: friendToAddId,
             initiatorId: parseInt(activeUserInitiatorId)
   
           }
