@@ -31,14 +31,14 @@ export const getTasks = () => {
 }
     ).then(response => response.json())
     .then(parsedtasks => {
-            // console.table(parsedtasks);
+            //  console.table(parsedtasks);
             tasks = parsedtasks.slice()
         })
 
     }
 
 export const saveTask = task => {
-    fetch('http://localhost:8088/tasks', {
+  return fetch('http://localhost:8088/tasks', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
