@@ -26,7 +26,8 @@ export const taskFormComponent = () => {
 		if (clickEvent.target.id === 'saveTaskBtn') {
 			// Get what user entered
 			const newTask = document.querySelector('.taskInput').value;
-            const taskDate = document.querySelector('.taskDate').value;
+			const taskDate = document.querySelector('.taskDate').value;
+			const hiddenInputValue = document.querySelector("#task-id").value
 
 						if (hiddenInputValue !== "") {
 							const editedTask = {
