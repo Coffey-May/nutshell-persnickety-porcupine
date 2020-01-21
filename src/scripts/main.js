@@ -52,6 +52,12 @@ eventHub.addEventListener("newUserRegistered", event => {
   return NutShellDashBoard()
 })
 
+eventHub.addEventListener("click", clickEvent => {
+  if (clickEvent.target.id === "NoReallyGtfoButton") {
+  sessionStorage.removeItem("activeUser")
+  return LogInLoad()
+}
+})
 
 
 
