@@ -13,3 +13,43 @@
     background-color: black;
     font-family: 'Julius Sans One', sans-serif;
 }
+
+
+
+.logoutButton1 {
+margin-left:85vw;
+  
+}
+.logoutButton2 {
+
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+   
+}
+
+
+.logOutBtn{
+
+    background-color: rgba(224, 254, 216, 0.817);
+    border-radius: 10%;
+    background-color: rgb(247, 6, 6);
+    color:white;
+
+  }
+
+ .logOutBtn:hover {
+    /* background-color: #73eb77; */
+    /* background-color: lightsalmon */
+    /* background-color: red; */
+    background-color: #b30404;
+    color:white;
+}
+
+
+
+.logOutBtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
