@@ -11,6 +11,7 @@ import { getUsers } from "./Users/UserProvider.js"
 import {ArticleList} from "./Articles/ArticleList.js"
 import { EventList } from "./Events/EventList.js";
 import { TaskList } from "./Tasks/TaskList.js";
+import ChatListComponent from "./Chats/ChatForm.js";
 // import { useFriends } from "./Friends/FriendProvider.js"
 // import { useFriends } from "./FriendProvider.js"
 // import { useUsers } from "../Users/UserProvider.js"
