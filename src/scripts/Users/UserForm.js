@@ -59,7 +59,7 @@ export const RegisterNewAccountForm = () => {
             <label class="userRegisterLabels" for="">E-MAIL</label>
             <input type="email" id="userName"><br>
             <label class="userLabels" for="">Password</label>
-            <input type="hs -o
+            <input type="password" id="password1"><br>
             password" id="password1"><br>
             <label class="userLabels" for="">Password</label>
             <input type="password" id="password2"><br>
