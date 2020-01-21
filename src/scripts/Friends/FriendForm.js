@@ -39,7 +39,7 @@ export const FriendFormComponent = () => {
         const createNewFriendJoin = {
 
           userId: friendToAddId,
-          initiatorId: activeUserInitiatorId
+          initiatorId: parseInt(activeUserInitiatorId)
 
         }
 
@@ -67,14 +67,16 @@ export const FriendFormComponent = () => {
   const render = () => {
     contentTarget.innerHTML = `
         
-        <div>
-        <h2>FRIENDS</h2>
+    
+        <div class="friendForm">
         <form action="">
-        <button class="addBtnFriend" type="button">Add Friend</button>
-        <input type="text" id="friend-added">
-        
+            <label for="">Friend</label>
+            <input class="userName type="text" id="friend-added"><br>
+                        
         </form>
-        <button id="saveBtnFriend" type="button">Save Friend</button>
+<br>
+
+        <button id="saveBtnFriend">Save Friend</button>
         </div>
 
   `
@@ -85,7 +87,16 @@ export const FriendFormComponent = () => {
 }
 
 
+{/* <button class="addBtnFriend" type="button">Add Friend</button> */}
 
 
 
+// <div>
+// <h2>FRIENDS</h2>
+// <form action="">
 
+// <input type="text" id="friend-added">
+
+// </form>
+// <button id="saveBtnFriend" type="button">Save Friend</button>
+// </div>

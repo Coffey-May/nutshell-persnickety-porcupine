@@ -13,6 +13,11 @@ export const FriendCard = friends => {
       <button id="deleteFriend--${friends.userId}" type="button" class="deleteFriendButton">Delete Friend</button>
    
       </section>
+      <br>
+      <br>
+      
+    
+
   `;
 };
 

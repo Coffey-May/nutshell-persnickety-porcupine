@@ -46,3 +46,53 @@ h2{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+
+
+ .deleteFriendButton{
+
+    background-color: rgba(224, 254, 216, 0.817);
+    color:rgb(0, 0, 0);
+    border-radius: 10%;
+  }
+
+ .deleteFriendButton:hover {
+    /* background-color: #73eb77; */
+    background-color: lightsalmon
+}
+
+.deleteFriendButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  
+  #addBtnFriend{
+    background-color: rgba(224, 254, 216, 0.817);
+    color:rgb(0, 0, 0);
+    border-radius: 10%;
+}
+#saveBtnFriend{
+    background-color: rgba(224, 254, 216, 0.817);
+    color:rgb(0, 0, 0);
+    border-radius: 10%;
+}
+#addBtnFriend:hover {
+    background-color: #73eb77
+}
+#saveBtnFriend:hover {
+    background-color: #73eb77
+}
+
+#addBtnFriend:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#saveBtnFriend:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }

@@ -9,9 +9,16 @@
 import { useFriends, deleteFriend } from "./FriendProvider.js"
 import { useUsers } from "../Users/UserProvider.js"
 import { FriendCard } from "./Friend.js"
-
+import { FriendFormComponent } from "./FriendForm.js"
 const eventHub = document.querySelector(".container");
 const contentTarget = document.querySelector(".friends_list")
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "addBtnFriend") {
+    return FriendFormComponent()
+  }
+})
+
 
 export const FriendList = () => {
 
@@ -116,7 +123,10 @@ export const FriendList = () => {
                         </div>
                 </section>
             </div>  
-
+            <br>
+            <br>
+            <br>
+            <br>
 
    `
     }
