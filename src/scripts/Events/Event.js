@@ -8,9 +8,9 @@ export const EventComponent = event => {
       <p class="eventCardDate">Date: ${event.dateTime}</p>
       <p class="eventCardLocation">Location: ${event.eventLocation}</p>
       <button>Edit Event</button>
-     <button>Delete Event</button>  
+     <button id="deleteEventBtn--${event.id}">Delete Event</button>  
      
-
+     
 
     </section>
   `;
