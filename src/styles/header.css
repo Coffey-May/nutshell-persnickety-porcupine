@@ -4,7 +4,20 @@
 }
 .headerTitle{
     letter-spacing: 3rem;
-}
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e3e2e2, 0 0 40px #dbdbdb, 0 0 50px #bdbcbd, 0 0 60px #4d4b4c, 0 0 70px #434142;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #6f6e6f, 0 0 40px #616161, 0 0 50px #4d4d4d, 0 0 60px #3c3a3b, 0 0 70px #727272, 0 0 80px #555455;
+    }
+  }
+
 
 
 .header {

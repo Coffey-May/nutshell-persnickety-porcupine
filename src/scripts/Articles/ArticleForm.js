@@ -1,3 +1,4 @@
+///rebecca added edit and delete
 import {getUsers,useUsers,saveUser }from "../Users/UserProvider.js"
 import {editArticles, deleteArticles, saveArticle, getArticles, useArticles } from "./ArticleProvider.js"
 
@@ -81,7 +82,7 @@ const render = () => {
     <h2>ARTICLES</h2>
 <div class="newsForm">
     <form action="">
-        <br><input type="hidden" id="article-id"></br>
+        <input type="hidden" id="article-id">
         <label for="">Title</label>
         <input class="articleName" type="text"><br>
         <label for="">Synopsis</label>
