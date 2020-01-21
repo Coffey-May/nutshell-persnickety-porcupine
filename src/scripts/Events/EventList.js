@@ -61,7 +61,7 @@ export const EventList = () => {
 })
 
 
-     //STILL NEEDS WORK
+     
     const render = (arrayOfEvents, arrayOfUsers) => {
 
         contentTarget.innerHTML = `

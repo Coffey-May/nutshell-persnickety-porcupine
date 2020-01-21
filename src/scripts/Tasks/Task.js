@@ -3,8 +3,8 @@
 export const TaskComponent = tasks => {
   return `
     <div class="taskCard">
-        <p class="taskCardName">Name: ${tasks.taskName}</p>
-        <p class="tasksCardETA">Complete by: ${tasks.taskETA}</p>
+        <p class="taskCardName">Task-Name: ${tasks.taskName}</p>
+        <p class="tasksCardETA">Task Expected Completion: ${tasks.taskETA}</p>
         <p class="tasksCardETA">Complete by: ${tasks.taskCompletion}</p>
         <p class="tasksCardURL">Link: ${tasks.userId}</p>
     </div>

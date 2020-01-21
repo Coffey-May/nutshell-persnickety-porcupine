@@ -83,7 +83,7 @@ const render = () => {
   <h2>EVENTS</h2>
   <div class="eventForm">
       <form action="">
-      <br><input type="hidden" id="event-id"></br>
+      <input type="hidden" id="event-id">
          
           <label for="">Name</label>
           <input class="eventName"type="text"><br>
