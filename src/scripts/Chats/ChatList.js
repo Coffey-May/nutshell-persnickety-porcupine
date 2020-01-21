@@ -40,20 +40,32 @@ const ChatListComponent = () => {
 
 
   const render = (chatCollection) => {
+      const userId =
       contentTarget.innerHTML = chatCollection.map(
           (individualChat) => {
-              return `
-                  <section class="Chat">
-                      <div>${individualChat.user.userName}</div>
-                      <div>${individualChat.chatText}</div>
-                      <div>
-                          ${new Date(individualChat.date).toLocaleDateString("us-en")}
-                          ${new Date(individualChat.date).toLocaleTimeString("us-en")}
-                      </div>
-                      </section>`
-                      
-                      `<button id="editChat--${individualChat.id}">Edit</button>
-              `
+            if (parseInt(sessionStorage.getItem("activeUser")) === individualChat.userId) {
+            return `
+                <section class="Chat">
+                    <div>${individualChat.user.userName}</div>
+                    <div>${individualChat.chatText}</div>
+                    <div>
+                        ${new Date(individualChat.date).toLocaleDateString("us-en")}
+                        ${new Date(individualChat.date).toLocaleTimeString("us-en")}
+                    </div>
+                    <button id="editChat--${individualChat.id}">Edit</button>
+                    </section>`
+            } else {
+            return `
+                <section class="Chat">
+                    <div>${individualChat.user.userName}</div>
+                    <div>${individualChat.chatText}</div>
+                    <div>
+                        ${new Date(individualChat.date).toLocaleDateString("us-en")}
+                        ${new Date(individualChat.date).toLocaleTimeString("us-en")}
+                    </div>
+                    </section>`
+
+            }   
           }
       ).join("")
   }
