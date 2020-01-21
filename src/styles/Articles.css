@@ -1,9 +1,12 @@
 main{
     height:100vh;
 }
-/* #hidden{
+
+
+.hidden{
     display:none;
-} */
+} 
+
 .articleList{
     width:40vw;
     color:white;
