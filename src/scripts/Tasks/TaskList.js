@@ -25,7 +25,16 @@ export const TaskList = () => {
         render(updatedTasks, updatedUsers)
        
     })
+
+// ///////////////////////
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id === "deleteTaskBtn") {
+           
+    console.log('delete clicked')
+           
+        }})
     
+    ///////////////////////
   
      //STILL NEEDS WORK
     const render = (arrayOfTasks, arrayOfUsers) => {
