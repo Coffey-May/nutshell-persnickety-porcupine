@@ -91,6 +91,7 @@ export const RegisterNewAccount = () => {
           saveUser(newUser).then(
             () => {
                 if (sessionStorage.hasOwnProperty("activeUser")) {
+                  contentTarget.innerHTML = "";
                 const message = new CustomEvent("newUserRegistered")
                 eventHub.dispatchEvent(message)
 
