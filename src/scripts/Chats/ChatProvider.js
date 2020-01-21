@@ -20,7 +20,7 @@ export const editChat = (chatsObject) => {
 }
 
 export const getChat = () => {
-    return fetch("http://localhost:8088/chat")
+    return fetch("http://localhost:8088/chat?_expand=user")
         .then(response => response.json())
         .then((chatArray) => {
             chat = chatArray.slice()

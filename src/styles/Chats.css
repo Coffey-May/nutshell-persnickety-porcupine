@@ -2,6 +2,12 @@ h2{
     font-family: 'Julius Sans One', sans-serif;
 }
 
+
+.chatList {
+    display: flex;
+    flex-direction: column-reverse
+}
+
 .chat{
     border:1px solid black;
     height:20vh;

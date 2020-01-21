@@ -1,5 +1,4 @@
-import { saveChat, getChat, useChat, editChat } from "./ChatProvider.js";
-import { ChatComponent } from "./Chat.js";
+import { saveChat, useChat, editChat } from "./ChatProvider.js";
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.chat')
@@ -17,7 +16,7 @@ export const ChatFormComponent = () => {
             }
         )
         document.querySelector("#chat-id").value = theFoundedChat.id
-        document.querySelector("#chat-text").value = theFoundedChat.text
+        document.querySelector("#chat-text").value = theFoundedChat.chatText
         document.querySelector("#chat-userId").value = theFoundedChat.userId
     })
 
@@ -31,7 +30,7 @@ export const ChatFormComponent = () => {
             if (hiddenInputValue !== "") {
                 const editedChat = {
                     id: parseInt(document.querySelector("#chat-id").value, 10),
-                    message: document.querySelector("#chat-text").value,
+                    chatText: document.querySelector("#chat-text").value,
                     userId: parseInt(document.querySelector("#chat-userId").value, 10),
                     date: Date.now()
                 }
