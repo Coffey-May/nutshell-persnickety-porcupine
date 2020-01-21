@@ -8,8 +8,8 @@ export const ArticleComponent = articles => {
     <p class="articlesCardSynopsis">Synopsis: ${articles.articleSynopsis}</p>
     <p class="articlesCardURL">Link: ${articles.articleURL}</p>
     <p class="articlesCardTimeStamp">Date: ${articles.postDate}</p>
-    <button>Edit Article</button>
-    <button>Delete Article</button>
+    <button id="editArticle--${article.id}">Edit Article</button>
+    <button id="deleteArticle--${article.id}">Delete Article</button>
     </section>
   `;
 };
