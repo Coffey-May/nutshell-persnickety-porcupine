@@ -53,7 +53,7 @@ eventHub.addEventListener("userLoggedIn", event => {
 
 })
 eventHub.addEventListener("newUserRegistered", event => {
-  return NutShellDashBoard()
+  NutShellDashBoard()
   document.querySelector(".hidden").classList.remove("hidden")
 })
 
