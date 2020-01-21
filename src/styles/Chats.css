@@ -6,6 +6,8 @@ h2{
 .chatList {
     display: flex;
     flex-direction: column-reverse;
+    height:20vh;
+    overflow: scroll;
 }
 
 .Chat{
