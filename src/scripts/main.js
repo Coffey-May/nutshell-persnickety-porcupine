@@ -34,7 +34,7 @@ export const NutShellDashBoard = () => {
   // .then(AddFriendComponent)
   .then(getFriends)
   .then(FriendList)
-  .then(FriendFormComponent)
+  // .then(FriendFormComponent)
   
   
 }
