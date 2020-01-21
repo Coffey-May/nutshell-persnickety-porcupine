@@ -1,5 +1,5 @@
 //Coffey setup the task list
-import { useTasks,getTasks } from "./TaskProvider.js"
+import { useTasks,deleteTasks } from "./TaskProvider.js"
 import {taskFormComponent} from "./TaskForm.js"
 
 import {useUsers} from "../Users/UserProvider.js"
@@ -28,15 +28,20 @@ export const TaskList = () => {
 
 // ///////////////////////
     eventHub.addEventListener("click", clickEvent => {
-        if (clickEvent.target.id === "deleteTaskBtn") {
+        if (clickEvent.target.id.startsWith("deleteTaskBtn--")) {
+            
+            const [prefix, id] = clickEvent.target.id.split("--")
+            console.log(id)
+    deleteTasks(id).then(
+        () => {
+            const updatedTasks = useTasks()
+            render(updatedTasks)
+        })
            
-    console.log('delete clicked')
-           
-        }})
-    
+    }
+})
     ///////////////////////
   
-     //STILL NEEDS WORK
     const render = (arrayOfTasks, arrayOfUsers) => {
         
         contentTarget.innerHTML = `

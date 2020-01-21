@@ -3,18 +3,14 @@ import {taskFormComponent} from "./Tasks/TaskForm.js";
 import {EventFormComponent} from "./Events/EventForm.js";
 import {ArticleFormComponent} from "./Articles/ArticleForm.js";
 import {ChatFormComponent} from "./Chats/ChatForm.js"
-// import {FriendFormComponent,} from "./Friends/FriendForm.js";
 import {FriendList} from "./Friends/FriendList.js"
-// import FriendList from "./Friends/FriendList2.js"
 import { getFriends } from "./Friends/FriendProvider.js"
 import { getUsers } from "./Users/UserProvider.js"
 import {ArticleList} from "./Articles/ArticleList.js"
 import { EventList } from "./Events/EventList.js";
 import { TaskList } from "./Tasks/TaskList.js";
-import ChatListComponent from "./Chats/ChatForm.js";
-// import { useFriends } from "./Friends/FriendProvider.js"
-// import { useFriends } from "./FriendProvider.js"
-// import { useUsers } from "../Users/UserProvider.js"
+import ChatListComponent from "./Chats/ChatList.js";
+
 
 const eventHub = document.querySelector(".container");
 
