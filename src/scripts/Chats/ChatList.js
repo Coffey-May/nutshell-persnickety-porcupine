@@ -39,23 +39,23 @@ const ChatListComponent = () => {
   })
 
 
-//   const render = (chatCollection) => {
-//       contentTarget.innerHTML = chatCollection.map(
-//           (individualChat) => {
-//               return `
-//                   <section class="Chat">
-//                       <div>${individualChat.userId}</div>
-//                       <div>${individualChat.chatText}</div>
-//                       <div>
-//                           ${new Date(individualChat.date).toLocaleDateString("us-en")}
-//                           ${new Date(individualChat.date).toLocaleTimeString("us-en")}
-//                       </div>
-//                       <button id="editChat--${individualChat.id}">Edit</button>
-//                   </section>
-//               `
-//           }
-//       ).join("")
-//   }
+  const render = (chatCollection) => {
+      contentTarget.innerHTML = chatCollection.map(
+          (individualChat) => {
+              return `
+                  <section class="Chat">
+                      <div>${individualChat.userId}</div>
+                      <div>${individualChat.chatText}</div>
+                      <div>
+                          ${new Date(individualChat.date).toLocaleDateString("us-en")}
+                          ${new Date(individualChat.date).toLocaleTimeString("us-en")}
+                      </div>
+                      <button id="editChat--${individualChat.id}">Edit</button>
+                  </section>
+              `
+          }
+      ).join("")
+  }
 
 }
 

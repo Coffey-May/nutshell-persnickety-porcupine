@@ -42,7 +42,7 @@ export const ChatFormComponent = () => {
             } else {
                 // Else, save the notes with a POST operation
                 const newChat = {
-                    message: document.querySelector("#chat-text").value,
+                    chatText: document.querySelector("#chat-text").value,
                     userId: parseInt(sessionStorage.getItem("activeUser"), 10),
                     date: Date.now()
                 }
