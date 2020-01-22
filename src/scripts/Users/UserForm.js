@@ -54,9 +54,9 @@ export const RegisterNewAccountForm = () => {
     if (clickEvent.target.id === "registerNewButton") {
       const contentTarget = document.querySelector(".userForm");
       contentTarget.innerHTML = `
-    <h1>REGISTER A NEW ACCOUNT</h1>
-    <div>
-        <form action="">
+    <h1 class="reg-header">REGISTER A NEW ACCOUNT</h1>
+    <div class="reg-form">
+        <form action="" >
             <label class="userRegisterLabels" for="">E-MAIL</label>
             <input type="email" id="userName"><br>
             <label class="userLabels" for="">Password</label>
@@ -64,7 +64,7 @@ export const RegisterNewAccountForm = () => {
             <label class="userLabels" for="">Password</label>
             <input type="password" id="password2"><br>
             </form>
-            <button type="button" id="registerButton">Register</button>
+            <button class=""reg-btn type="button" id="registerButton">Register</button>
             </div>`;
     }
   });

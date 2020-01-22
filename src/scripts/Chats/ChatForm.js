@@ -57,15 +57,17 @@ export const ChatFormComponent = () => {
     })
     const render = () => {
         contentTarget.innerHTML = `
-        <h2>CHAT</h2>
+        <div class="chat-field">
+        <h1 class="chat-header">CHAT</h1>
         <div>
         <input type="hidden" id="chat-id" />
         <input type="hidden" id="chat-userId" />
                 <div class="chat__field">
-                    Message: <input type="text" id="chat-text" />
+                   Message: <input type="text" id="chat-text" />
                 </div>
                     <button id="addMessageBtn">Create New Message</button>
             </details>
+        </div>
         </div>
         `
 

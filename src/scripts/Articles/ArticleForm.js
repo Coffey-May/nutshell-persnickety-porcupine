@@ -81,7 +81,7 @@ const render = () => {
     contentTarget.innerHTML =`
     <h2>ARTICLES</h2>
 <div class="newsForm">
-    <form action="">
+    <form action="">    
         <input type="hidden" id="article-id">
         <label for="">Title</label>
         <input class="articleName" type="text"><br>

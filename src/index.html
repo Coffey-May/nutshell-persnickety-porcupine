@@ -11,7 +11,8 @@
     <title>Document</title>
 </head>
 
-<body class="container"></body>
+<body class="container fade-in"></body>
+
 
 <!-- USER LOGIN -->
 
@@ -20,7 +21,7 @@
 </div>
 
 
-<main class="main hidden">
+<main class="main hidden fade-in">
     <!-- HEADER -->
     <header class="header">
         <h1 class="headerTitle">NUTSHELL</h1>
@@ -35,12 +36,14 @@
                     <!--  NEWS ARTICLES -->
 
                     <section class="newsDiv">
-                        <button class="addBtnArticle" id="addBtnArticle">Add Article</button><br>
+                        <button class="addBtnArticle" id="addBtnArticle">Add Article</button>
+                        <h1>ARTICLES</h1>
                     </section>
                     <!-- EVENTS -->
 
                     <section class="eventsDiv">
-                        <button class="addBtnEvent" id="addBtnEvent">Add Event</button><br>
+                        <button class="addBtnEvent" id="addBtnEvent">Add Event</button>
+                        <h1>EVENTS</h1>
                     </section>
                 </div>
             </article>
@@ -51,22 +54,26 @@
             </article>
 
             <!-- CHATS AND TASKS -->
+            <div class="chatAndTasks">
             <article class="Chat">
                 <section class="chat">
                 </section>
+                <section class="chatList"></section>
             </article>
 
-            <section class="chatList">Chat</section>
+            
 
             <article class="Tasks">
                 <section class="tasks"></section>
+                <section class="taskList">Tasks</section>
             </article>
             
-            <section class="taskList">Tasks</section>
+           
+        </div>
         </div>
 
         <!-- FRIENDS ASIDE -->
-        <article class="friendsList">
+        <article class="friendsList"><h2 class="freinds-header">FRIENDS</h2>
             <section class="friendSaveAlert"> </section>
             <aside>
                 <section class="friends"></section>

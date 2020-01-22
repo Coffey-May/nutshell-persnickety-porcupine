@@ -9,17 +9,17 @@ h1{
   justify-content: center;
   letter-spacing: 1rem;
   font-size: xx-large;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow 3.5s ease-in-out infinite alternate;
+  -moz-animation: glow 3.5s ease-in-out infinite alternate;
+  animation: glow 3.5s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e3e2e2, 0 0 40px #dbdbdb, 0 0 50px #bdbcbd, 0 0 60px #4d4b4c, 0 0 70px #434142;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e3e2e2, 0 0 40px #dbdbdb, 0 0 50px #bdbcbd, 0 0 60px #4d4b4c, 0 0 70px #000000;
   }
   to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #6f6e6f, 0 0 40px #616161, 0 0 50px #4d4d4d, 0 0 60px #3c3a3b, 0 0 70px #727272, 0 0 80px #555455;
+    text-shadow: 0 0 20px #fff, 0 0 30px #575757, 0 0 40px #353535, 0 0 50px #323232, 0 0 60px #3c3a3b, 0 0 70px #727272, 0 0 80px #000000;
   }
 }
 
@@ -34,6 +34,17 @@ input{
   color:white;
   font-family: 'Julius Sans One', sans-serif;
 }
+/* .userForm{
+  height:100vh;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image:linear-gradient(
+      rgba(19, 19, 19, 0.95),
+      rgba(11, 11, 11, 0.95)
+      ),
+       url('https://thumbs.dreamstime.com/z/seamless-black-gold-art-deco-vector-pattern-background-seamless-black-gold-art-deco-vector-pattern-132199097.jpg');
+} */
 .welcomeForm{
   height:100vh;
   text-align: center;
@@ -45,13 +56,18 @@ input{
       ),
        url('https://thumbs.dreamstime.com/z/seamless-black-gold-art-deco-vector-pattern-background-seamless-black-gold-art-deco-vector-pattern-132199097.jpg');
 }
+.reg-header{
+  text-align: center;
+  padding-top: 30vh;
+}
+.reg-form{
+  text-align: center;
+}
 
 .welcomeFormContent{
   padding-top: 30vh;
 }
-.welcomeHeader{
-  
-}
+
 .userFormDiv{
   margin-top: 30vh;
 

@@ -11,7 +11,6 @@ import { EventList } from "./Events/EventList.js";
 import { TaskList } from "./Tasks/TaskList.js";
 import ChatListComponent from "./Chats/ChatList.js";
 import { getChat } from "./Chats/ChatProvider.js";
-import { getTasks } from "./Tasks/TaskProvider.js";
 
 const eventHub = document.querySelector(".container");
 
@@ -25,8 +24,8 @@ const LogInLoad = () => {
 
 export const NutShellDashBoard = () => {
   return getUsers()
+  
   .then(taskFormComponent)
-  .then(getTasks)
   .then(ArticleList)
   .then(EventList)
   .then(TaskList)
