@@ -47,9 +47,9 @@ export const FriendFormComponent = () => {
           // <strong>Oops!</strong> Please register a new Account!
           // <strong>Oops!</strong> Please fill out all Fields!
           // <strong>Oops!</strong> Passwords Don't Match!
-       
-       
-       
+
+
+
           var close = document.getElementsByClassName("closebtn");
           var i;
 
@@ -75,8 +75,8 @@ export const FriendFormComponent = () => {
         renderAlert()
 
         /// Alert for Register New Account      alert("Please register a new Account");
-      /// Alert for Register New Account   alert("Please fill out all Fields");
-      /// Alert for Register New Account         window.alert("Passwords Don't Match")
+        /// Alert for Register New Account   alert("Please fill out all Fields");
+        /// Alert for Register New Account         window.alert("Passwords Don't Match")
 
 
       } else {
@@ -113,6 +113,50 @@ export const FriendFormComponent = () => {
   )
 
 
+
+
+  eventHub.addEventListener("addFriendNameClicked", clickEvent => {
+
+
+      const afterSaveFriends = useFriends()
+      const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
+
+
+      const message = new CustomEvent("newFriendJoinCreated2")
+      const friendToBeAdded = event.detail.friendId
+
+
+
+      /// Populate the friends object  
+      const createNewFriendJoin2 = {
+
+        userId: parseInt(friendToBeAdded),
+        initiatorId: parseInt(activeUserInitiatorId)
+
+      }
+
+
+      saveFriend(createNewFriendJoin2).then(
+        () => {
+          /// Important to get the latest friends to do the render here.  Without it there is a lag in application state
+          /// or the friends listed will be one transaction behind
+          const afterSaveFriends = useFriends()
+          const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
+          const message = new CustomEvent("newFriendJoinCreated2")
+
+          console.log(reallyUpdatedFriendAfterSave)
+          eventHub.dispatchEvent(message)
+          render(reallyUpdatedFriendAfterSave)
+        }
+      )
+
+    })
+ 
+
+
+
+
+
   const render = () => {
     contentTarget.innerHTML = `
         
@@ -135,17 +179,3 @@ export const FriendFormComponent = () => {
 
 }
 
-
-{/* <button class="addBtnFriend" type="button">Add Friend</button> */ }
-
-
-
-// <div>
-// <h2>FRIENDS</h2>
-// <form action="">
-
-// <input type="text" id="friend-added">
-
-// </form>
-// <button id="saveBtnFriend" type="button">Save Friend</button>
-// </div>

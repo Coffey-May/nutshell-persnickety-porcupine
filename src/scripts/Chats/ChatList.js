@@ -6,45 +6,80 @@ const contentTarget = document.querySelector(".chatList")
 
 
 const ChatListComponent = () => {
-        const chats = useChat()
-        const users = useUsers()
+    const chats = useChat()
+    const users = useUsers()
 
-  eventHub.addEventListener("ChatHasBeenEdited", event => {
-      const updatedChat = useChat()
-      render(updatedChat)
-  })
+    eventHub.addEventListener("ChatHasBeenEdited", event => {
+        const updatedChat = useChat()
+        render(updatedChat)
+    })
 
-  eventHub.addEventListener("click", clickEvent => {
-      if (clickEvent.target.id.startsWith("editChat--")) {
-          const [deletePrefix, chatId] = clickEvent.target.id.split("--")
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("editChat--")) {
+            const [deletePrefix, chatId] = clickEvent.target.id.split("--")
 
-          const editChat = new CustomEvent("editButtonClicked", {
-              detail: {
-                  chatId: chatId
-              }
-          })
+            const editChat = new CustomEvent("editButtonClicked", {
+                detail: {
+                    chatId: chatId
+                }
+            })
 
-          eventHub.dispatchEvent(editChat)
-      }
-  })
+            eventHub.dispatchEvent(editChat)
+        }
+    })
 
-  const renderChatAgain = () => {
-      const allTheChat = useChat()
-      render(allTheChat)
+    const renderChatAgain = () => {
+        const allTheChat = useChat()
+        render(allTheChat)
 
-  }
+    }
 
-  eventHub.addEventListener("chatCreated", event => {
-      renderChatAgain()
-  })
+    eventHub.addEventListener("chatCreated", event => {
+        renderChatAgain()
+    })
 
 
-  const render = (chatCollection) => {
-      const userId =
-      contentTarget.innerHTML = chatCollection.map(
-          (individualChat) => {
-            if (parseInt(sessionStorage.getItem("activeUser")) === individualChat.userId) {
-            return `
+
+
+
+eventHub.addEventListener("click", clickEvent => {
+
+    if (clickEvent.target.id.startsWith("addFriend--")) {
+        
+        const confirmFriendAdd = confirm(`Add friendName as new friend???`);
+     
+        if (confirmFriendAdd === true) {
+
+
+
+
+            const [deletePrefix, friendId] = clickEvent.target.id.split("--")
+
+            console.log(friendId)
+
+            const addChatFriend = new CustomEvent("addFriendNameClicked", {
+                detail: {
+                    friendId: friendId
+                }
+
+            })
+            eventHub.dispatchEvent(addChatFriend)
+
+
+        }
+    }
+}
+
+)
+
+
+
+const render = (chatCollection) => {
+    const userId =
+        contentTarget.innerHTML = chatCollection.map(
+            (individualChat) => {
+                if (parseInt(sessionStorage.getItem("activeUser")) === individualChat.userId) {
+                    return `
             
                 <section class="Chat">
                 <button class="chatUsername" id="#addBtnChatFriend">${individualChat.user.userName}:</button>    
@@ -56,12 +91,12 @@ const ChatListComponent = () => {
                     </div>
                     <button id="editChat--${individualChat.id}">Edit</button>
                     </section>`
-            } else {
-            return `
+                } else {
+                    return `
   
                 <section class="Chat">
-                
-            <button class="chatUsername" id="#addBtnChatFriend">${individualChat.user.userName}:</button>  
+                <button id="addFriend--${individualChat.user.id}" id="task__addFriendBtn" class="task__addFriendBtn">${individualChat.user.userName}</button>
+         
                     <div class="chatFriendCardName2">${individualChat.user.userName}</div>
                     <div>${individualChat.chatText}</div>
                     <div>
@@ -70,11 +105,13 @@ const ChatListComponent = () => {
                     </div>
                     </section>`
 
-            }   
-          }
-      ).join("")
-  }
-render(chats)
+                }
+            }
+        ).join("")
+
 }
 
+render(chats)
+
+}
 export default ChatListComponent

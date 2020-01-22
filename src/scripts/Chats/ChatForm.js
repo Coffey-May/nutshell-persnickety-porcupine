@@ -1,5 +1,5 @@
 import { saveChat, useChat, editChat } from "./ChatProvider.js";
-import { useFriends, saveFriend, getFriends } from "../Friends/FriendProvider.js"
+// import { useFriends, saveFriend, getFriends } from "../Friends/FriendProvider.js"
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.chat')
 
@@ -51,58 +51,16 @@ export const ChatFormComponent = () => {
                 const message = new CustomEvent("chatCreated")
                 eventHub.dispatchEvent(message)
                 saveChat(newChat).then(() => eventHub.dispatchEvent(message))
-                  
-                  
-                    
-                  
+
+
+
+
             }
         }
     })
 
 
 
-
-    
-    eventHub.addEventListener("click", clickEvent => {
-  
-        if (clickEvent.target.id.startsWith("deleteNote--")) {
-        // if (clickEvent.target.id === "#addBtnChatFriend") {
-    
-            const [deletePrefix, friendId] = clickEvent.target.id.split("--")
-            console.log(friendId)
-          const chats = useChat();
-          const userName = document.querySelector(".chatFriendCardName2").textContent;
-          
-         
-          
-    
-            const contentTarget = document.querySelector(".friends");
-            const friendToAddId =friendId
-    console.log(friendToAddId)
-            /// Populate the friends object  
-            const createNewFriendJoin = {
-    
-              userId: friendToAddId,
-              initiatorId: parseInt(activeUserInitiatorId)
-    
-            }
-    
-    
-            saveFriend(createNewFriendJoin).then(
-              () => {
-                /// Important to get the latest friends to do the render here.  Without it there is a lag in application state
-                /// or the friends listed will be one transaction behind
-                const afterSaveFriends = useFriends()
-                const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
-                const message = new CustomEvent("newFriendJoinCreated")
-    
-                eventHub.dispatchEvent(message)
-                render(reallyUpdatedFriendAfterSave)
-              }
-            )
-    
-          }
-        })
     
 
 
@@ -125,7 +83,11 @@ export const ChatFormComponent = () => {
     }
 
     render()
-}
 
+}
 export default ChatFormComponent
+
+
+
+
 

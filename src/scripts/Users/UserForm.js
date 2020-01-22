@@ -33,7 +33,7 @@ export const userFormComponent = () => {
     //    compare code
     if (clickEvent.target.id === "logInButton") {
       const users = useUsers();
-      console.log(users);
+      // console.log(users);
       const userName = document.querySelector("#userName").value;
       const foundUser = users.find(user => user.userName === userName);
     if (foundUser === undefined) {
