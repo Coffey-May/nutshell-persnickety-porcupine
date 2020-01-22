@@ -11,7 +11,7 @@ h2{
 }
 
 .Chat{
-    height:20vh;
+    height:10vh;
     /* background-color: rgb(167, 167, 167); */
     border:1px solid black;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ h2{
 
 .chat{
     border:1px solid black;
-    height:20vh;
+    height:8vh;
     /* background-color: rgb(167, 167, 167); */
     border:1px solid black;
     background-repeat: no-repeat;

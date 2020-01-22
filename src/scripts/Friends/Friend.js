@@ -5,6 +5,7 @@
 // which lets you drill down to user off of the friends with friends.user.userName
 
 export const FriendCard = friends => {
+
   return `
     <section class="friendCard">
     <div class="friendCardName">Friend : ${friends.user.userName} </div>
