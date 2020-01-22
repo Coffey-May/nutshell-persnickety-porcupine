@@ -9,10 +9,15 @@ const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".taskList")
 
 
+
 export const TaskList = () => {
     const tasks = useTasks()
     const users = useUsers()
     
+    eventHub.addEventListener("CompHasBeenEdited", event => {
+        const updatedTasks = useTasks()
+        render(updatedTasks)
+    })
     eventHub.addEventListener("TaskHasBeenEdited", event => {
         const updatedTasks = useTasks()
         render(updatedTasks)
@@ -33,7 +38,6 @@ export const TaskList = () => {
     eventHub.addEventListener("click", clickEvent => {
         if (clickEvent.target.id.startsWith("editTaskBtn--")) {
             const [deletePrefix, taskId] = clickEvent.target.id.split("--")
-  
             const editTask = new CustomEvent("editTaskButtonClicked", {
                 detail: {
                     taskId: taskId
@@ -59,13 +63,20 @@ export const TaskList = () => {
            
     }
 })
-const checkbox = document.querySelector(".taskInput");
 
-checkbox.addEventListener( "change", function(evt) {
-    if(evt.target.id.startsWith("taskInput--")) {
-        const [prefix, id] = change.checked.target.id.split("--")
-}
-})
+    eventHub.addEventListener("change", e => {
+        if(e.target.id === "taskInput") {
+            const completion = true
+            const taskChanged = new CustomEvent("TaskInputChanged", {
+                detail: {
+                    taskCompletion: completion
+                }
+            })
+
+            eventHub.dispatchEvent(taskChanged)
+            }
+        })
+
     ///////////////////////
   
     const render = (arrayOfTasks, arrayOfUsers) => {
