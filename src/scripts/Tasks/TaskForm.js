@@ -81,8 +81,8 @@ console.log(newTaskObject)
 
 	const render = () => {
 		contentTarget.innerHTML = `
-    <h2>TASKS</h2>
-		<div>
+    <h1 class="task-header">TASKS</h1>
+		<div class="taskFormDiv">
 		<input type="hidden" id="task-id" />
 		<input type="hidden" id="task-userId" />
 		<input type="hidden" id="task-taskCompletion" />

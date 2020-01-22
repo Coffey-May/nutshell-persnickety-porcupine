@@ -4,9 +4,10 @@
 }
 .headerTitle{
     letter-spacing: 3rem;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
+    margin:0 auto;
+    -webkit-animation: glow 3.5s ease-in-out infinite alternate;
+    -moz-animation: glow 3.5s ease-in-out infinite alternate;
+    animation: glow 3.5s ease-in-out infinite alternate;
   }
   
   @-webkit-keyframes glow {
@@ -19,7 +20,17 @@
   }
 
 
+.gtfoButton{
+  margin-left:86.5vw;
+  background-color: rgba(245, 14, 83, 0.543);
+  border-radius: 15%;
+  color:rgb(255, 255, 255);
 
+}
+.gtfoButton:hover{
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
 .header {
     border:1px solid black;
     color:white;
