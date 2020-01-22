@@ -12,6 +12,7 @@ import { TaskList } from "./Tasks/TaskList.js";
 import ChatListComponent from "./Chats/ChatList.js";
 import { getChat } from "./Chats/ChatProvider.js";
 import { getTasks } from "./Tasks/TaskProvider.js";
+import { getArticles } from "./Articles/ArticleProvider.js";
 
 const eventHub = document.querySelector(".container");
 
@@ -22,12 +23,12 @@ const LogInLoad = () => {
   .then(RegisterNewAccount)
   .then(userFormComponent)
 }
-
 export const NutShellDashBoard = () => {
   return getUsers()
   .then(taskFormComponent)
   .then(getTasks)
   .then(ArticleList)
+  .then(getArticles)
   .then(EventList)
   .then(getFriends)
   .then(TaskList)

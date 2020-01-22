@@ -6,6 +6,26 @@ const contentTarget = document.querySelector('.tasks');
 const eventHub = document.querySelector('.container');
 
 export const taskFormComponent = () => {
+	eventHub.addEventListener("TaskInputChange", event => {
+		const CompToBeEdited = event.detail.taskId
+
+		const allTasksArray = useTasks()
+
+		const theFoundedTask = allTasksArray.find(
+				(currentTaskObject) => {
+						return currentTaskObject.id === parseInt(CompToBeEdited, 10)
+				}
+		)
+		document.querySelector("#task-id").value = theFoundedTask.id
+		const editedComp = {
+			id: parseInt(document.querySelector("#task-id").value, 10),
+			taskCompletion: true
+	}
+	editTasks(editedComp).then(() => {
+			eventHub.dispatchEvent(new CustomEvent("TaskHasBeenEdited"))
+	})
+			})
+
 	eventHub.addEventListener("editTaskButtonClicked", event => {
 		const TasksToBeEdited = event.detail.taskId
 
@@ -39,6 +59,7 @@ export const taskFormComponent = () => {
 							editTasks(editedTask).then(() => {
 									eventHub.dispatchEvent(new CustomEvent("TaskHasBeenEdited"))
 							})
+						
 					} else {
 				const newTaskObject = {
 				"taskName": newTask,
@@ -64,7 +85,8 @@ console.log(newTaskObject)
 		<div>
 		<input type="hidden" id="task-id" />
 		<input type="hidden" id="task-userId" />
-
+		<input type="hidden" id="task-taskCompletion" />
+		
         <form action="">
             <label for="name">TaskName</label>
             <input class="taskInput" type="text"><br>
