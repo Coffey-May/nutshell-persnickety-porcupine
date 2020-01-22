@@ -23,6 +23,8 @@ main{
          url('https://i.pinimg.com/originals/11/b6/76/11b6769c8f2ea91b25fa0bb10bcaf4ab.jpg');
     
 }
+
+
 .newAndArticlesResult{
    margin:0 auto;
    display:flex;
@@ -52,7 +54,8 @@ section{
 }
 .newsForm{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
 }
 input{
     color:white;
@@ -80,6 +83,8 @@ input{
     background-color: rgba(224, 254, 216, 0.817);
     color:rgb(0, 0, 0);
     border-radius: 10%;
+    height:18.5vh;
+    
 }
 #addBtnArticle:hover {
     background-color: #73eb77

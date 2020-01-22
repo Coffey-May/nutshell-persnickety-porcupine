@@ -3,7 +3,7 @@
 import { useUsers, getUsers, saveUser } from "../Users/UserProvider.js"
 import { EventComponent } from "./Event.js"
 import { EventFormComponent } from "./EventForm.js"
-import { useEvents, deleteEvent } from "./EventProvider.js"
+import { useEvents, deleteEvent, editEvent } from "./EventProvider.js"
 // import { BuildingCount } from "./BuildingCount.js"
 // import { BuildingCard } from "./BuildingCard.js"
 
@@ -19,6 +19,10 @@ eventHub.addEventListener("click", clickEvent => {
 export const EventList = () => {
     const events = useEvents()
     const users = useUsers()
+    eventHub.addEventListener("eventHasBeenEdited", event => {
+        const updatedEvents = useEvents()
+        render(updatedEvents, users)
+    })
     
   
     eventHub.addEventListener("eventStateChanged", event => {
@@ -32,8 +36,17 @@ export const EventList = () => {
         const updatedEvents = useEvents()
         render(updatedEvents, updatedUsers)
     })
-
     eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("editEvent--")) {
+            const [pre, id] = clickEvent.target.id.split("--")
+        
+            const editEventEvent = new CustomEvent("editEventButtonClicked", {
+                detail: {
+                    id: id
+                }
+        })
+            eventHub.dispatchEvent(editEventEvent)
+        }
         if (clickEvent.target.id.startsWith("deleteEventBtn--")) {
             
             const [prefix, id] = clickEvent.target.id.split("--")
@@ -48,7 +61,7 @@ export const EventList = () => {
 })
 
 
-     //STILL NEEDS WORK
+     
     const render = (arrayOfEvents, arrayOfUsers) => {
 
         contentTarget.innerHTML = `

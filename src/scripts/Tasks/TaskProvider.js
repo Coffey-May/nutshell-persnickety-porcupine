@@ -3,7 +3,7 @@
 let tasks = []
 
 export const useTasks = () => {
-    return tasks.slice();
+    return tasks.slice()
 };
 
 export const editTasks = (tasksObject) => {
