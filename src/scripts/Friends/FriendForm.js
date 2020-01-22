@@ -144,7 +144,7 @@ export const FriendFormComponent = () => {
           const reallyUpdatedFriendAfterSave = afterSaveFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
           const message = new CustomEvent("newFriendJoinCreated2")
 
-          console.log(reallyUpdatedFriendAfterSave)
+          // console.log(reallyUpdatedFriendAfterSave)
           eventHub.dispatchEvent(message)
           render(reallyUpdatedFriendAfterSave)
         }

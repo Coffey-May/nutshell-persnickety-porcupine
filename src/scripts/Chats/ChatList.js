@@ -45,10 +45,24 @@ const ChatListComponent = () => {
 eventHub.addEventListener("click", clickEvent => {
 
     if (clickEvent.target.id.startsWith("addFriend--")) {
+        // const confirmFriendAdd1 =  event.detail.userName
+
+        // const friendName = clickEvent.target.userId
+        // const friendName = document.querySelector("chatFriendCardName2").value
+        // const friendName = clickEvent.target.querySelector("chatFriendCardName2").value
+        // // "chatFriendCardName2"
+{/* <button id="addFriend--1" class="task__addFriendBtn">adi@nss.com</button> */}
+
+// console.log(friendName)
+        // const userId = document.querySelector("#chat-userId").value
         
-        const confirmFriendAdd = confirm(`Add friendName as new friend???`);
+        // document.querySelector("#chat-userId").value = theFoundedChat.userId
+        // console.log(theFoundedChat.userId)
+       
+        // const confirmFriendAddText = confirm(`Add ${event.detail.userName} as new friend???`);
+        const confirmFriendAddText = confirm(`Add this friend to your list???`);
      
-        if (confirmFriendAdd === true) {
+        if (confirmFriendAddText === true) {
 
 
 
@@ -95,9 +109,9 @@ const render = (chatCollection) => {
                     return `
   
                 <section class="Chat">
-                <button id="addFriend--${individualChat.user.id}" id="task__addFriendBtn" class="task__addFriendBtn">${individualChat.user.userName}</button>
+                <button id="addFriend--${individualChat.user.id}" id="task__addFriendBtn" class="task__addFriendBtn" value="task__addFriend" >${individualChat.user.userName}</button>
          
-                    <div class="chatFriendCardName2">${individualChat.user.userName}</div>
+                    <div class="chatFriendCardName2" value"chatFriendCardName2"   >${individualChat.user.userName}</div>
                     <div>${individualChat.chatText}</div>
                     <div>
                         ${new Date(individualChat.date).toLocaleDateString("us-en")}

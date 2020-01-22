@@ -107,7 +107,7 @@ export const FriendList = () => {
     eventHub.addEventListener("newFriendJoinCreated2", clickEvent => {
    const nowFriends =useFriends()
         renderFriendsAgain()
-        console.log(nowFriends)
+        // console.log(nowFriends)
       })
 
 
