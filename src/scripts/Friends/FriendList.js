@@ -42,11 +42,12 @@ export const FriendList = () => {
  
     let activeUserInitiatorId = parseInt(sessionStorage.getItem('activeUser'))
 
-    console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
+    // console.log(`activeUserInitiatorId = ${activeUserInitiatorId}`)
 
     // This filter pulls ONLY the friends that match the activeUser 
     const activeUserFriendsAtLogin = allFriends.filter(FriendRel => parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
 
+ 
     eventHub.addEventListener("click", clickEvent => {
 
         if (clickEvent.target.id.startsWith("deleteFriend--")) {
@@ -78,25 +79,36 @@ export const FriendList = () => {
         }
     }) 
 
-    
+ 
     
     const renderFriendsAgain = () => {
 
         /// Important to get the latest friends to do the render here.  Without it there is a lag in application state
        /// or the friends listed will be one transaction behind
-        const nowFriends = useFriends()
+        const nowFriends = useFriends()                                         // active seesion User   === initiatorId in friends object
         const activeUserFriendsUpdated = nowFriends.filter(FriendRel =>  parseInt(activeUserInitiatorId) === parseInt(FriendRel.initiatorId))
         const allFriends = activeUserFriendsUpdated
      
         render(activeUserFriendsUpdated)
         
     }
-    
+
+
+
+
     eventHub.addEventListener("newFriendJoinCreated", event => {
+        const nowFriends =useFriends()
       renderFriendsAgain()
-    
+
     })
 
+
+    //This comes from FriendForm.js line 142
+    eventHub.addEventListener("newFriendJoinCreated2", clickEvent => {
+   const nowFriends =useFriends()
+        renderFriendsAgain()
+        // console.log(nowFriends)
+      })
 
 
     const render = (friends) => 
